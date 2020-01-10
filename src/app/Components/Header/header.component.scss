@@ -1,0 +1,47 @@
+//all leftheader thingys
+.LeftHeader{
+    display: flex;
+    align-items: center; 
+
+}
+
+a:hover{
+    cursor: pointer;
+    color: #0064d2;
+}
+
+.LeftHeader a:hover{
+    
+
+    //custom underline
+    border-bottom: 1px solid #0064d2;
+
+}
+
+//right thignys
+.RightHeader{
+    display: flex;
+    align-items: center; 
+    font-weight: bold;
+    //text-align: right;
+}
+
+.RightHeader a:hover{
+    
+    //custom underline
+
+}
+
+.daftarButton{
+    color: #0064d2;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 1px 1px 7px #d3d3d3;
+}
+
+// a thingys
+a{
+    margin: 10px;
+}
+
+

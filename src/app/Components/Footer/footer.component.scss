@@ -1,0 +1,67 @@
+//headerss
+.littleImage{
+    width: 50px;
+    height: 50px;
+    display: flex;
+}
+
+.littleBiggerImage{
+    width: 90px;
+    height: 40px;
+    display: flex;
+    margin: 10px;
+}
+
+.littleWierdImage{
+    width: 150px;
+    height: 40px;
+    display: flex;
+    margin: 10px;
+}
+
+.titels{
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+//bototms
+.greyText1{
+    color: #58627a;
+    font-size: 18px;
+}
+
+.greyText{
+    color: #58627a;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.makeItFlexy{
+    display: flex;
+    margin: 15px;
+}
+
+//row and coloumn thingys
+.makeItAColumn{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.makeItAColumnWithoudMargin{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.makeItARow{
+    display: flex;
+    flex-direction: row;
+}
+
+a:hover{
+    color: #0064d2;
+    cursor: pointer;
+}

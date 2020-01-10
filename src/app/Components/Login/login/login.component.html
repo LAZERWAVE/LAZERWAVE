@@ -1,0 +1,38 @@
+<div style="margin-bottom: 40px">
+    <div>
+        <label style="font-weight: bold">Log in/Daftar</label>
+    </div>
+    <div>
+        <label style="color: grey; font-size: 15px">Perjalanan serumu mulai dari sini</label>
+    </div>
+</div>
+<div style="margin-bottom: 20px; display: flex">
+    <input type="text" placeholder="Nomor Ponsel atau Email" style="width: 100%; height: 35px; padding-left: 15px;" [(ngModel)]="test">
+</div>
+<div class="lanjutB">
+    <a style="color: blue; width: 100%; display: flex; justify-content: center" (click)="sumbit()">LANJUTKAN</a>
+</div>
+<div style="margin-top: 20px; margin-bottom: 20px; display: flex; justify-content: center">
+    <label style="color: grey; font-size: 10px">---atau dengan---</label>
+</div>
+<div style="margin-bottom: 15px;">
+    <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="gugel()">
+        <img src="./../../../../assets/G-oogle.png" width="25px" height="25px">
+        <label>Google</label>
+    </div>
+    <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="facebuk()">
+        <img src="./../../../../assets/F-acebook.png" width="25px" height="25px">
+        <label>Facebook</label>
+    </div>
+</div>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center"> 
+    <div>
+        <label style="color: grey; font-size: 10px">Dengan mendaftar kamu menyetujui Kebiduckan Privvs</label>
+    </div>
+    <div>
+        <label style="color: grey; font-size: 10px"> dan Syarat & Ketentuan</label>
+    </div>
+    <div>
+        <label style="color: grey; font-size: 10px">----------------</label>
+    </div>
+</div>
