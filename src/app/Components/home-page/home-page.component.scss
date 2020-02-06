@@ -21,9 +21,9 @@
 //going anywhere boxes
 .goingAnyWhereBox{
     margin: 50px;
-    z-index: 2;
-    background-color: aliceblue;
+    z-index: 2;  
     border-radius: 10px;
+    box-shadow: 1px 1px 7px black;
 }
 
 
@@ -119,3 +119,13 @@
     height: 40px;
 }
 
+.wa{
+    background-color: lime;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.wa:hover{
+    cursor: pointer;
+}

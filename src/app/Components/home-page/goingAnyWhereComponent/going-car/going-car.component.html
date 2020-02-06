@@ -1,0 +1,115 @@
+<div class="makeItARow" style="justify-content: space-between; padding: 30px">
+    <div style="display: flex; align-items: center">
+        <img src="./../../../../../assets/GoingAnyWhere/miniCar.png">
+        <label for="">Booking Hotel Murah Online dengan Harga Promo</label>
+    </div>
+    <div>
+        <label for="">Pencarian Terakhir</label>
+    </div>
+</div>
+<div style="display: flex; justify-content: space-between; padding: 30px">
+    <div class="oneFourthBoxdropdown">
+        <label for="">choose</label>
+        <div class="dropdownContent">
+            <div class="dropdown1Content">
+                <div class="makeItARow">
+                    <img src="./../../../../../assets/GoingAnyWhere/miniBuilding.png" alt="">
+                    <div>
+                        <div>Bali</div>
+                        <div>Indonesia</div>
+                    </div>
+                </div>
+                <div>
+                    <label class="cityCode">Province</label>
+                </div>
+            </div>  
+            <div class="dropdown1Content">
+                <div class="makeItARow">
+                    <img src="./../../../../../assets/GoingAnyWhere/miniBuilding.png" alt="">
+                    <div>
+                        <div>Bandung</div>
+                        <div>Indonesia</div>
+                    </div>
+                </div>
+                <div>
+                    <label class="cityCode">City</label>
+                </div>
+            </div> 
+            <div class="dropdown1Content">
+                <div class="makeItARow">
+                    <img src="./../../../../../assets/GoingAnyWhere/miniBuilding.png" alt="">
+                    <div>
+                        <div>Jakarta</div>
+                        <div>Indonesia</div>
+                    </div>
+                </div>
+                <div>
+                    <label class="cityCode">Province</label>
+                </div>
+            </div>  
+            <div class="dropdown1Content">
+                <div class="makeItARow">
+                    <img src="./../../../../../assets/GoingAnyWhere/miniBuilding.png" alt="">
+                    <div>
+                        <div>Semarang</div>
+                        <div>Indonesia</div>
+                    </div>
+                </div>
+                <div>
+                    <label class="cityCode">City</label>
+                </div>
+            </div>
+            <div class="dropdown1Content">
+                <div class="makeItARow">
+                    <img src="./../../../../../assets/GoingAnyWhere/miniBuilding.png" alt="">
+                    <div>
+                        <div>Surabaya</div>
+                        <div>Indonesia</div>
+                    </div>
+                </div>
+                <div>
+                    <label class="cityCode">City</label>
+                </div>
+            </div> 
+            <div class="dropdown1Content">
+                <div class="makeItARow">
+                    <img src="./../../../../../assets/GoingAnyWhere/miniBuilding.png" alt="">
+                    <div>
+                        <div>Yogyakarta</div>
+                        <div>Indonesia</div>
+                    </div>
+                </div>
+                <div>
+                    <label class="cityCode">Province</label>
+                </div>
+            </div>             
+        </div>
+    </div>   
+    
+    <div class="oneFourthBoxdropdown">
+        <input [matDatepicker]="startDate">
+        <mat-datepicker-toggle [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>   
+    </div>
+
+    <div class="oneFourthBoxdropdown">
+        <input [matDatepicker]="endDate">
+        <mat-datepicker-toggle [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>   
+    </div>
+
+    <div class="oneFourthBoxdropdown">
+        <label>choose</label>
+        <div class="dropdownContent">
+            <div class="dropdown1Content" style="flex-direction: column; width: 90%">
+                <div class="makeItARow">
+                    <div class="makeItAColumn">
+                        <label>Tamu dan Kamar</label>
+                        <input type="number" placeholder="Mobil">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+<div class="makeItARow" style="margin-bottom: 15px">
+    <div>
+        <label>x</label>
+    </div>
+    <div>
+        <label style="margin-left: 8px">Daftar</label>
+    </div>
+</div>
+<div style="margin-bottom: 15px">
+    <input type="email" placeholder="Input Email" style="width: 95%; height: 35px; padding-left: 4%;" [(ngModel)]="EMAIL">
+</div>
+<div style="margin-bottom: 15px">
+    <input type="text" placeholder="Nama Depan" style="width: 95%; height: 35px; padding-left: 4%;" [(ngModel)]="namefront">
+</div>
+<div style="margin-bottom: 15px">
+    <input type="text" placeholder="Nama Belakang" style="width: 95%; height: 35px; padding-left: 4%;" [(ngModel)]="nameback">
+</div>
+<div style="width: 100%; margin-bottom: 15px">
+    <div class="makeItARow" style="width: 100%; justify-content: space-between;">
+        <select>
+            <option value="">+61</option>
+            <option value="">+62</option>
+            <option value="">+63</option>
+        </select>
+        <input type="text" placeholder="Nomor Ponsel" style="height: 35px; margin-right: -2px;" [(ngModel)]="PHONE">
+    </div>
+</div>
+<div class="makeItARow" style="margin-bottom: 15px">
+    <input *ngIf="show.checked==false" type="password" placeholder="Password" style="width: 85%; height: 35px; padding-left: 4%;" [(ngModel)]="pass">
+    <input *ngIf="show.checked" type="text" placeholder="Password" style="width: 85%; height: 35px; padding-left: 4%;" [(ngModel)]="pass">
+    <mat-button-toggle style="height: 35px; width: 15%; font-size: 10px;" #show></mat-button-toggle>
+</div>
+<div class="makeItAColumn" style="margin-bottom: 15px">
+    <label style="color: grey; font-size: 10px">Minimal 7 character harus kombinasi angka,symbol</label>
+    <label style="color: grey; font-size: 10px">dan kapital</label>
+</div>
+<div class="lanjutB">
+    <a style="color: blue; width: 100%; display: flex; justify-content: center" (click)="sumbit()">Buat Akun</a>
+</div>
+<div style="margin-top: 20px; margin-bottom: 20px; display: flex; justify-content: center">
+    <label style="color: grey; font-size: 10px">---atau dengan---</label>
+</div>
+<div style="margin-bottom: 15px;">
+    <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="gugel()">
+        <img src="./../../../../assets/G-oogle.png" width="25px" height="25px">
+        <label>Google</label>
+    </div>
+    <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="facebuk()">
+        <img src="./../../../../assets/F-acebook.png" width="25px" height="25px">
+        <label>Facebook</label>
+    </div>
+</div>

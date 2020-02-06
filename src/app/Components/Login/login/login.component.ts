@@ -1,4 +1,6 @@
+import { RegisterComponent } from './../../register/register.component'
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   test :string 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     this.test == "";
@@ -25,5 +27,10 @@ export class LoginComponent implements OnInit {
   sumbit(){
     if(this.test == "" || this.test == null) alert("The Field Cannot be empty!");
     else alert(this.test);
+    this.openDialogRegister();
+  }
+
+  openDialogRegister() {
+    this.dialog.open(RegisterComponent)
   }
 }

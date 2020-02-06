@@ -7,11 +7,16 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
-import { GoingflightComponent } from './Components/home-page/goingAnyWhereComponent/goingFlight/goingflight/goingflight.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './Components/Login/login/login.component'
 // import { MatDialogModule } from '@angular/material';
 import { MaterialModule } from './material/material.module';
+import { RegisterComponent } from './Components/register/register.component';
+import { GoingPlaneComponent } from './Components/home-page/goingAnyWhereComponent/going-plane/going-plane.component';
+import { GoingHotelComponent } from './Components/home-page/goingAnyWhereComponent/going-hotel/going-hotel.component';
+import { GoingCarComponent } from './Components/home-page/goingAnyWhereComponent/going-car/going-car.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,18 +24,25 @@ import { MaterialModule } from './material/material.module';
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
-    GoingflightComponent,
-    LoginComponent
+    GoingPlaneComponent,
+    LoginComponent,
+    RegisterComponent,
+    GoingPlaneComponent,
+    GoingHotelComponent,
+    GoingCarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    GraphQLModule,
+    HttpClientModule
   ],
   entryComponents: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
 

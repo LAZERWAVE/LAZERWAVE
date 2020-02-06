@@ -10,17 +10,17 @@
 </div>
 
 <div class="goingAnyWhereBox">
-    <div class="makeItARow" style="justify-content: space-between">
+    <div class="makeItARow" style="justify-content: space-between; background-color: aliceblue;">
         <div class="makeItAColumnLeft" style="margin-left: 10px">
             <label>Hey, you</label>
             <label style="font-weight: bold">Going Any Where ?</label>
         </div>
         <div class="makeItARow">
-            <div class="makeItAColumnMargin">
+            <div class="makeItAColumnMargin" (click)="flight()">
                 <img src="./../../../assets/GoingAnyWhere/plain.png">
                 <label>flight</label>
             </div>
-            <div class="makeItAColumnMargin">
+            <div class="makeItAColumnMargin" (click)="hotel()">
                 <img src="./../../../assets/GoingAnyWhere/hotel.png">
                 <label>hotel</label>
             </div>
@@ -29,7 +29,7 @@
                 <label>train</label>
             </div>
             <div class="makeItAColumnMargin">
-                    <img src="./../../../assets/GoingAnyWhere/car.png">
+                    <img src="./../../../assets/GoingAnyWhere/car.png" (click)="car()">
                 <label>car</label>
             </div>
             <div class="makeItAColumnMargin">
@@ -39,8 +39,16 @@
         </div>     
     </div>
     <div>
-        <app-goingflight></app-goingflight>
+        <app-going-plane *ngIf="selected_plane"></app-going-plane>
+        <app-going-hotel *ngIf="selected_hotel"></app-going-hotel>
+        <app-going-car *ngIf="selected_car"></app-going-car>
     </div>
 </div>
+
+<div  style=" position: fixed; display: flex;justify-content: flex-end; width: 98%">
+    <a class="wa" href="https://www.whatsapp.com/?lang=id">whatsaap</a>
+</div>
+
+
 
 
