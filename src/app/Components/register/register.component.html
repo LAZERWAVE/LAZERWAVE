@@ -1,6 +1,6 @@
 <div class="makeItARow" style="margin-bottom: 15px">
     <div>
-        <label>x</label>
+        <label (click)="close()">x</label>
     </div>
     <div>
         <label style="margin-left: 8px">Daftar</label>
@@ -25,11 +25,14 @@
         <input type="text" placeholder="Nomor Ponsel" style="height: 35px; margin-right: -2px;" [(ngModel)]="PHONE">
     </div>
 </div>
+
 <div class="makeItARow" style="margin-bottom: 15px">
-    <input *ngIf="show.checked==false" type="password" placeholder="Password" style="width: 85%; height: 35px; padding-left: 4%;" [(ngModel)]="pass">
-    <input *ngIf="show.checked" type="text" placeholder="Password" style="width: 85%; height: 35px; padding-left: 4%;" [(ngModel)]="pass">
+    <input *ngIf="show.checked==false" type="password" placeholder="Password" style="width: 85%; height: 35px; padding-left: 15px;" [(ngModel)]="pass">
+    <input *ngIf="show.checked" type="text" placeholder="Password" style="width: 85%; height: 35px; padding-left: 15px;" [(ngModel)]="pass">
     <mat-button-toggle style="height: 35px; width: 15%; font-size: 10px;" #show></mat-button-toggle>
+
 </div>
+
 <div class="makeItAColumn" style="margin-bottom: 15px">
     <label style="color: grey; font-size: 10px">Minimal 7 character harus kombinasi angka,symbol</label>
     <label style="color: grey; font-size: 10px">dan kapital</label>
@@ -43,10 +46,10 @@
 <div style="margin-bottom: 15px;">
     <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="gugel()">
         <img src="./../../../../assets/G-oogle.png" width="25px" height="25px">
-        <label>Google</label>
+        <google-signin></google-signin>
     </div>
     <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="facebuk()">
         <img src="./../../../../assets/F-acebook.png" width="25px" height="25px">
-        <label>Facebook</label>
+        <app-facebook-sign-in></app-facebook-sign-in>
     </div>
 </div>

@@ -1,0 +1,121 @@
+<div class="makeItARow">
+    <div style="width: 35%; margin: 10px;">
+        <label style="margin: 10px; " for="">Tinjau Pesanan Anda</label>
+        <div style="border: 1px solid black; padding: 10px; border-radius: 10px;">
+            <div style="display: flex; justify-content: space-between; margin: 10px;">
+                <label for="">{{TiketTitle}}</label>
+                <div (click)="showDetail()">
+                    <a>LIHAT DETAIL</a>
+                </div>
+            </div>
+            <hr>
+            <div class="makeItARow">
+                <div class="makeItAColumn" style="padding: 10px;">
+                    <label for="">jenis tiket</label>
+                    <label for="">{{TiketTitle}}</label>
+                </div>
+                <div class="makeItAColumn" style="padding: 10px;">
+                    <label for="">Tanggal</label>
+                    <label for="">{{TiketDate}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 25%; ">
+        <label style="margin: 10px; " for="">Rincian Pembayaran</label>
+        <div style="border: 1px solid black; padding: 10px; border-radius: 10px;">
+            <div class="makeItARow" style="justify-content: space-between;">
+                <div class="makeItAColumn">
+                    <label>{{TiketTitle}}</label>
+                    <label for=""> X {{TiketQuantity}}</label>
+                </div>
+                <label for="">IDR  {{TiketPrice}}</label>
+            </div>
+            <hr>
+            <div style="display: flex; justify-content: space-between;">
+                <label for="">Total pembayaran</label>
+                <label for="">IDR {{TiketPrice * TiketQuantity}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="penghubung.CurrentUser != null">
+    <button (click)="fillAsUser()">Fill as User</button>
+</div>
+<div>
+    Detail Pemesanan
+</div>
+<div class="makeItAColumn" style="width: 50%;border: 1px solid black;">
+    <div class="makeItARow">
+        <label for="">Title</label>
+        <input [(ngModel)]="PemesanTitle" type="text">
+        <label for="">Nama Depan</label>
+        <input [(ngModel)]="PemesanDepan" type="text">
+        <label for="">Nama Belakang</label>
+        <input [(ngModel)]="PemesanBelakang" type="text">
+    </div>
+    <div class="makeItARow">
+        <label for="">Kode Negara</label>
+        <select>
+            <option value="">+61</option>
+            <option value="">+62</option>
+            <option value="">+63</option>
+        </select>
+        <label for="">Nomor Telepon</label>
+        <input [(ngModel)]="PemesanTelepon" type="text">
+    </div>
+    <label for="">Email anda</label>
+    <input [(ngModel)]="PemesanEmail" type="text">
+</div>
+<div>
+    <label for="">Sama seperti pemesan</label>
+    <mat-button-toggle style="height: 35px; width: 15%; font-size: 10px;" #show></mat-button-toggle>
+</div>
+<div>
+    Detail Pengambilan tiket
+</div>
+<div *ngIf="show.checked" class="makeItAColumn" style="width: 50%;border: 1px solid black;">
+    <div class="makeItARow">
+        <label for="">Title</label>
+        <input [(ngModel)]="PemesanTitle" type="text">
+        <label for="">Nama Depan</label>
+        <input [(ngModel)]="PemesanDepan" type="text">
+        <label for="">Nama Belakang</label>
+        <input [(ngModel)]="PemesanBelakang" type="text">
+    </div>
+    <div class="makeItARow">
+        <label for="">Kode Negara</label>
+        <select>
+            <option value="">+61</option>
+            <option value="">+62</option>
+            <option value="">+63</option>
+        </select>
+        <label for="">Nomor Telepon</label>
+        <input [(ngModel)]="PemesanTelepon" type="text">
+    </div>
+    <label for="">Email anda</label>
+    <input [(ngModel)]="PemesanEmail" type="text">
+</div>
+<div *ngIf="!show.checked" class="makeItAColumn" style="width: 50%;border: 1px solid black;">
+    <div class="makeItARow">
+        <label for="">Title</label>
+        <input [(ngModel)]="PenumpangTitle" type="text">
+        <label for="">Nama Depan</label>
+        <input [(ngModel)]="PenumpangDepan" type="text">
+        <label for="">Nama Belakang</label>
+        <input [(ngModel)]="PenumpangBelakang" type="text">
+    </div>
+    <div class="makeItARow">
+        <label for="">Kode Negara</label>
+        <select>
+            <option value="">+61</option>
+            <option value="">+62</option>
+            <option value="">+63</option>
+        </select>
+        <label for="">Nomor Telepon</label>
+        <input [(ngModel)]="PenumpangTelepon" type="text">
+    </div>
+    <label for="">Email anda</label>
+    <input [(ngModel)]="PenumpangEmail" type="text">
+</div>
+<button (click)="order()">order</button>

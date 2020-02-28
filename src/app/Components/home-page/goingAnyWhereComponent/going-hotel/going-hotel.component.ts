@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-going-hotel',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoingHotelComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
+  gotoHotel(){
+    this.router.navigateByUrl("Hotel");
+  }
 }

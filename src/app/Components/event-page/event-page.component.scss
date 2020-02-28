@@ -1,0 +1,183 @@
+//slider thingys
+.slide-container{
+    padding-bottom: 50px;
+    margin-bottom: -150px;
+    overflow: hidden;
+}
+
+.image-container{
+    position: relative;
+    width: 600%;
+    margin: 0px;
+    left: 0px;
+    animation: 20s slider infinite;
+    z-index: -1;
+}
+
+.image-container img{
+    width: 16.6667%
+}
+
+//going anywhere boxes
+.goingAnyWhereBox{
+    margin: 50px;
+    z-index: 2;  
+    border-radius: 10px;
+    box-shadow: 1px 1px 7px black;
+}
+
+
+
+@keyframes slider{
+    0%{
+        left: 0%;
+    }
+
+    20%{
+        left: 0%;
+    }
+
+    25%{
+        left: -100%;
+    }
+
+    35%{
+        left: -100%;
+    }
+
+    40%{
+        left: -200%;
+    }
+
+    55%{
+        left: -200%;
+    }
+
+    60%{
+        left: -300%;
+    }
+
+    75%{
+        left: -300%;
+    }
+
+    80%{
+        left: -400%;
+    }
+
+    95%{
+        left: -400%;
+    }
+
+    100%{
+        left: -500%;
+    }
+
+    115%{
+        left: -500%;
+    }
+
+    120%{
+        left: -600%;
+    }
+}
+
+//utility
+.makeItAColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.makeItAColumnLeft{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.makeItAColumnMargin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+    border: 1px solid lightgrey;   
+    border-radius: 8px;
+}   
+
+.makeItAColumnMargin:hover {
+    border: 1px solid #0064d2;   
+}   
+
+.makeItARow{
+    display: flex;
+    flex-direction: row;
+}
+
+.makeItAColumnMargin img{
+    width: 55px;
+    height: 40px;
+}
+
+.wa{
+    background-color: lime;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.wa:hover{
+    cursor: pointer;
+}
+
+//drop dawwwn
+.makeItAColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.makeItARow{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.oneFourthBoxdropdown {
+    position: relative;
+    display: inline-block;
+    width: 19.9%;
+  }
+  
+.dropdownContent {
+    display: none;
+    position: absolute;
+
+    min-width: 160px;
+    z-index: 1;
+  }
+
+.oneFourthBoxdropdown:hover .dropdownContent {
+    display: block;
+}
+
+.dropdown1Content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 75%;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #f1f1f1;
+}
+
+.dropdown1Content:hover{
+
+    background-color: aliceblue;
+}
+
+.cityCode{
+    padding: 3px;
+    background-color: silver;
+    border-radius: 5px;
+}

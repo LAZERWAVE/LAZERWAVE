@@ -1,0 +1,104 @@
+<div class="makeItAColumn" style="width: 25%;border: 1px solid black; border-radius: 10px;">
+  <label for="">Rentang Harga</label>
+  <label for="">Sesuaikan harga dengan budget Anda</label>
+  <div class="makeItARow">
+    <input [(ngModel)]="MinVal" placeholder="Min" type="text">
+    <input [(ngModel)]="MaxVal" placeholder="Max" type="text">
+  </div>
+  <label for="">Kategori</label>
+  <input [(ngModel)]="Kategori" type="text">
+  <div>
+    <button (click)="getData()">Filter</button>
+    <button (click)="reset()">reset</button>
+  </div>
+</div>
+<div *ngIf="EventInterfaces[0] == null">
+  Loading....
+</div>
+<div *ngIf="EventInterfaces[0] != null">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+    </ng-container>
+    
+    
+    <ng-container matColumnDef="Tumbnail">
+      <th mat-header-cell *matHeaderCellDef> Tumbnail </th>
+      <td mat-cell *matCellDef="let element"> {{element.Tumbnail}} </td>
+    </ng-container>
+    
+    
+    <ng-container matColumnDef="Title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="kategori">
+      <th mat-header-cell *matHeaderCellDef> kategori </th>
+      <td mat-cell *matCellDef="let element"> {{element.kategori}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="Price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+  [pageSizeOptions]="[5]">
+  </mat-paginator>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <div>
+    <label for="">Title</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">Price</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">Tumbnail</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">kategori</label>
+    <input type="text">
+  </div>
+  <div>
+    <button>Insert</button>
+  </div>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <div>
+    <label for="">Id</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">Title</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">Price</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">Tumbnail</label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="">kategori</label>
+    <input type="text">
+  </div>
+  <div>
+    <button>Update</button>
+  </div>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <label for="">Id</label>
+  <input type="text">
+  <button>Delete</button>
+</div>

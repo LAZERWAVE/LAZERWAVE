@@ -1,0 +1,62 @@
+<div class="makeItARow">
+    <div class="makeItAColumn">
+        {{StartLocation}}
+        <input [(ngModel)]="StartLocation" type="text" matTooltip="from">
+    </div>
+    <div class="makeItAColumn">
+        {{EndLocation}}
+        <input [(ngModel)]="EndLocation" type="text" matTooltip="to">
+    </div>
+    <input [(ngModel)]="TrainDate" [matDatepicker]="endDate">
+    <mat-datepicker-toggle [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>
+    <input [(ngModel)]="Quantity" type="text" matTooltip="jumlah">
+    <button (click)="getTrain()">change</button>
+</div>
+<div>
+    <input [(ngModel)]="sortBy" matTooltip="Harga terendah |
+    Keberangkatan paling awal |
+    Keberangkatan paling akhir |
+    Kedatangan paling awal |
+    Kedatangan paling akhir |
+    Durasi tercepat" type="text">
+    
+</div>
+<div class="makeItARow">
+    <div style="border: 1px solid black; border-radius: 10px; padding: 10px; width: 20%;">
+        <div>
+            <label for="">Kelas</label>
+            <button (click)="toggleClass()">show</button>
+            <div *ngIf="showClass">
+                <input [(ngModel)]="Class" type="text">
+            </div>
+        </div>
+        <div>
+            <label for="">Waktu</label>
+            <button (click)="toggleTime()">show</button>
+            <div *ngIf="showTime">
+                <input [(ngModel)]="TimeMin" type="text" placeholder="Min">
+                <input [(ngModel)]="TimeMax" type="text" placeholder="Max">
+            </div>
+        </div>
+        <div>
+            <label for="">Nama Kereta</label>
+            <button (click)="toggleName()">show</button>
+            <div *ngIf="showName">
+                <input [(ngModel)]="Name" type="text">
+            </div>
+        </div>
+        <button (click)="reset()">reset</button>
+        <button (click)="getTrain()">filter</button>
+    </div>
+    <div style="width: 70%;">
+        <div *ngFor="let train of showTrains">
+            <div (click)="gotoDetail(train.Id)" style="display: flex; justify-content: space-between; border-radius: 10px; border: 1px solid black; padding: 10px;">
+                <label for="">{{train.Name}}</label>
+                <label for="">{{train.StartTime}} - {{train.EndTime}}</label>
+                <label for="">{{penghubung.Currency}} {{train.Price}}</label>
+                <button (click)=gotoCheckout(train.Id)>pilih</button>
+            </div>
+        </div>
+    </div>
+</div>

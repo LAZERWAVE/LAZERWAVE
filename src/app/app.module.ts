@@ -17,6 +17,23 @@ import { GoingHotelComponent } from './Components/home-page/goingAnyWhereCompone
 import { GoingCarComponent } from './Components/home-page/goingAnyWhereComponent/going-car/going-car.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { EventPageComponent } from './Components/event-page/event-page.component';
+import { EventDetailPageComponent } from './Components/event-page/event-detail/event-detail-page/event-detail-page.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { EventOrderPageComponent } from './Components/event-page/event-order/event-order-page/event-order-page.component';
+import { EventOrderDetailComponent } from './Components/event-page/event-order/event-order-detail/event-order-detail.component';
+import { EventSearchComponent } from './Components/event-page/event-search/event-search.component';
+import { RentPageComponent } from './Components/rent-page/rent-page.component';
+import { RentDetailComponent } from './Components/rent-page/rent-detail/rent-detail.component';
+import { TrainPageComponent } from './Components/train-page/train-page.component';
+import { ChattingComponent } from './Components/chatting/chatting.component';
+import { CheckoutPageComponent } from './Components/checkout-page/checkout-page.component';
+import { TrainDetailComponent } from './Components/train-page/train-detail/train-detail.component';
+import { GoogleComponent } from './Components/google/google.component';
+import { FacebookComponent } from './Components/facebook/facebook.component';
+import { ManageEventComponent } from './Components/Admin-Manage/manage-event/manage-event.component';
+import { Login2Component } from './Components/Login/login2/login2.component';
+import { Login3Component } from './Components/Login/login3/login3.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +46,23 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     GoingPlaneComponent,
     GoingHotelComponent,
-    GoingCarComponent
+    GoingCarComponent,
+    EventPageComponent,
+    EventDetailPageComponent,
+    EventOrderPageComponent,
+    EventOrderDetailComponent,
+    EventSearchComponent,
+    RentPageComponent,
+    RentDetailComponent,
+    TrainPageComponent,
+    ChattingComponent,
+    CheckoutPageComponent,
+    TrainDetailComponent,
+    GoogleComponent,
+    FacebookComponent,
+    ManageEventComponent,
+    Login2Component,
+    Login3Component,
   ],
   imports: [
     BrowserModule,
@@ -38,14 +71,19 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    LeafletModule.forRoot()
   ],
   entryComponents: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EventOrderDetailComponent,
+    TrainDetailComponent,
+    Login2Component,
+    Login3Component,
   ],
   providers: [
-
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,80 @@
+<div *ngFor="let event of detailEvent">
+    <a (click)="gotoHome()">Home</a>
+    >
+    <a (click)="gotoEvent()">Entertainment</a>
+    >
+    <a>{{event.Title}}</a>
+</div>
+<div class="makeItARow" style="justify-content: center;">
+    <div style="display: flex; justify-content: center; width: 25%; margin-right: 20px;">
+        <div *ngFor="let event of detailEvent" style="display: inline-flex;">
+            <div id={{event.Id}} style="width:100%; height:500px; display:inline-flex; flex-direction:column; border-radius:10px; border:1px solid grey; padding: 10px;">
+                <div style="margin-bottom: 150px;">
+                    <div class="slide-container" style="z-index: 1;">
+                        <figure class="image-container">
+                            <img src="{{event.Tumbnail}}" style=" border-radius:10px; height:75%">
+                            <img src="{{event.Tumbnail}}" style=" border-radius:10px; height:75%">
+                            <img src="{{event.Tumbnail}}" style=" border-radius:10px; height:75%">
+                            <img src="{{event.Tumbnail}}" style=" border-radius:10px; height:75%">
+                            <img src="{{event.Tumbnail}}" style=" border-radius:10px; height:75%">
+                            <img src="{{event.Tumbnail}}" style=" border-radius:10px; height:75%">
+                        </figure>
+                    </div>
+                </div>
+                <div style=" height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+                    <label>{{event.Title}}</label>
+                    <hr>
+                    <div style="display:flex; justify-content: space-between;">
+                        <label>muali dari</label>
+                        <label>{{penghubung.Currency}} {{event.Price}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 20%; display: flex; justify-content: space-between; flex-direction: column;margin-left: 5px;">
+        <div  *ngFor="let event of detailEvent" class="makeItAColumn" style="padding: 10px; background-color: aliceblue; border-radius: 10px; height: 72%; margin-bottom: 5px;">
+            <label for="">Mulai dari</label>
+            <label for="">{{penghubung.Currency}} {{event.Price}}</label>
+        </div>
+        <div id="map" style=" border: 1px solid black; height: 25%; border-radius: 10px;"></div>
+
+    </div>
+</div>
+<mat-tab-group style="margin: 10px; margin-bottom: 30px;">
+    <mat-tab label="Deskripsi">
+        <ng-template matTabContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit perferendis sunt ratione, recusandae cumque saepe hic in repellendus expedita modi tenetur laudantium laboriosam soluta est quidem vitae? Fuga, vitae fugit.
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="syarat dan ketentuan">
+        <ng-template matTabContent>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum sapiente ea aliquid, placeat quidem asperiores doloremque aspernatur, assumenda nisi ad corporis accusantium magni eius modi deleniti in debitis, quae consequuntur?
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="info penukaran">
+        <ng-template matTabContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos officiis illum qui quis ab asperiores in porro consectetur sapiente facilis obcaecati hic, mollitia voluptates saepe cum ad tempore corporis nulla?
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="venue">
+        <ng-template matTabContent>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, blanditiis id. Atque in mollitia blanditiis, assumenda quo adipisci sit, suscipit aut voluptas eligendi omnis. Id sapiente dolorum quae ab unde.
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+
+<h1>
+    pilihan tiket
+</h1>
+<span *ngFor="let event of detailEvent" style="margin: 10px; margin-bottom: 30px;">
+    <input type="text" [(ngModel)]="quantity">
+    <div *ngIf="quantity != null">
+        {{quantity *event.Price}}
+    </div>
+    <input [matDatepicker]="endDate" [(ngModel)]="date">
+    <mat-datepicker-toggle [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>   
+    <button (click)="order()">BUY</button>
+</span>
+

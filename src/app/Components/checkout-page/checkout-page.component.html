@@ -1,0 +1,175 @@
+<div>
+    {{count}}
+</div>
+<div class="makeItARow">
+    <div style="width: 50%;">
+        <div>
+            Detail Pemesanan
+        </div>
+        <div *ngIf="penghubung.CurrentUser != null">
+            <button (click)="fillAsUser()">Fill as User</button>
+        </div>
+        <div class="makeItAColumn" style="width: 100%;border: 1px solid black;">
+            <div class="makeItARow">
+                <label *ngIf='PemesanTitle ==  ""' for="">Title</label>
+                <label *ngIf='PemesanTitle !=  ""' for="" style="background-color: greenyellow;">Title</label>
+                <input [(ngModel)]="PemesanTitle" type="text">
+
+                <label *ngIf='PemesanDepan ==  ""' for="">Nama Depan</label>
+                <label *ngIf='PemesanDepan !=  ""' for="" style="background-color: greenyellow;">Nama Depan</label>
+                <input [(ngModel)]="PemesanDepan" type="text">
+
+                <label *ngIf='PemesanBelakang ==  ""' for="">Nama Belakang</label>
+                <label *ngIf='PemesanBelakang !=  ""' for="" style="background-color: greenyellow;">Nama Belakang</label>
+                <input [(ngModel)]="PemesanBelakang" type="text">
+            </div>
+            <div class="makeItARow">
+                <label for="">Kode Negara</label>
+                <input type="text"
+                        placeholder="Pick one"
+                        aria-label="Number"
+                        matInput
+                        [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">
+                    {{option}}
+                </mat-option>
+                </mat-autocomplete>
+
+                <label *ngIf='PemesanTelepon ==  ""' for="">Nomor Telepon</label>
+                <label *ngIf='PemesanTelepon !=  ""' for="" style="background-color: greenyellow;">Nomor Telepon</label>
+                <input [(ngModel)]="PemesanTelepon" type="text">
+
+            </div>
+
+            <label *ngIf='PemesanEmail ==  ""' for="">Email anda</label>
+            <label *ngIf='PemesanEmail !=  ""' for="" style="background-color: greenyellow;">Email anda</label>
+            <input [(ngModel)]="PemesanEmail" type="text">
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div *ngIf='PemesanEmail !=  "" && PemesanTelepon !=  "" && PemesanBelakang !=  "" && PemesanDepan !=  "" && PemesanTitle !=  ""'>
+            <div>
+                <label for="">Sama seperti pemesan</label>
+                <mat-button-toggle style="height: 35px; width: 15%; font-size: 10px;" #show></mat-button-toggle>
+            </div>
+        
+            <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+            <div>
+                Detail Pengambilan tiket
+            </div>
+            <div *ngIf="show.checked" class="makeItAColumn" style="width: 100%;border: 1px solid black;">
+                <div class="makeItARow">
+                    <label *ngIf='PemesanTitle ==  ""' for="">Title</label>
+                    <label *ngIf='PemesanTitle !=  ""' for="" style="background-color: greenyellow;">Title</label>
+                    <input [(ngModel)]="PemesanTitle" type="text">
+
+                    <label *ngIf='PemesanDepan ==  ""' for="">Nama Depan</label>
+                    <label *ngIf='PemesanDepan !=  ""' for="" style="background-color: greenyellow;">Nama Depan</label>
+                    <input [(ngModel)]="PemesanDepan" type="text">
+
+                    <label *ngIf='PemesanBelakang ==  ""' for="">Nama Belakang</label>
+                    <label *ngIf='PemesanBelakang !=  ""' for="" style="background-color: greenyellow;">Nama Belakang</label>
+                    <input [(ngModel)]="PemesanBelakang" type="text">
+                </div>
+                <div class="makeItARow">
+                    <label for="">Kode Negara</label>
+                    <input type="text"
+                            placeholder="Pick one"
+                            aria-label="Number"
+                            matInput
+                            [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option}}
+                    </mat-option>
+                    </mat-autocomplete>
+                    <label *ngIf='PemesanTelepon ==  ""' for="">Nomor Telepon</label>
+                    <label *ngIf='PemesanTelepon !=  ""' for="" style="background-color: greenyellow;">Nomor Telepon</label>
+                    <input [(ngModel)]="PemesanTelepon" type="text">
+                </div>
+                <label *ngIf='PemesanEmail ==  ""' for="">Email anda</label>
+                <label *ngIf='PemesanEmail !=  ""' for="" style="background-color: greenyellow;">Email anda</label>
+                <input [(ngModel)]="PemesanEmail" type="text">
+            </div>
+            
+            <div *ngIf="!show.checked" class="makeItAColumn" style="width: 100%;border: 1px solid black;">
+                <div class="makeItARow">
+                    <label *ngIf='PenumpangTitle ==  ""' for="">Title</label>
+                    <label *ngIf='PenumpangTitle !=  ""' for="" style="background-color: greenyellow;">Title</label>
+                    <input [(ngModel)]="PenumpangTitle" type="text">
+
+                    <label *ngIf='PenumpangDepan ==  ""' for="">Nama Depan</label>
+                    <label *ngIf='PenumpangDepan !=  ""' for="" style="background-color: greenyellow;">Nama Depan</label>
+                    <input [(ngModel)]="PenumpangDepan" type="text">
+
+                    <label *ngIf='PenumpangBelakang ==  ""' for="">Nama Belakang</label>
+                    <label *ngIf='PenumpangBelakang !=  ""' for="" style="background-color: greenyellow;">Nama Belakang</label>
+                    <input [(ngModel)]="PenumpangBelakang" type="text">
+                </div>
+                <div class="makeItARow">
+                    <label for="">Kode Negara</label>
+                    <input type="text"
+                            placeholder="Pick one"
+                            aria-label="Number"
+                            matInput
+                            [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option}}
+                    </mat-option>
+                    </mat-autocomplete>
+
+                    <label *ngIf='PenumpangTelepon ==  ""' for="">Nomor Telepon</label>
+                    <label *ngIf='PenumpangTelepon !=  ""' for="" style="background-color: greenyellow;">Nomor Telepon</label>
+                    <input [(ngModel)]="PenumpangTelepon" type="text">
+                </div>
+
+                <label *ngIf='PenumpangEmail ==  ""' for="">Email anda</label>
+                <label *ngIf='PenumpangEmail !=  ""' for="" style="background-color: greenyellow;">Email anda</label>
+                <input [(ngModel)]="PenumpangEmail" type="text">
+            </div>
+            <button *ngIf='(PemesanEmail !=  "" && PemesanTelepon !=  "" && PemesanBelakang !=  "" && PemesanDepan !=  "" && PemesanTitle !=  "") &&
+             (show.checked || (PenumpangEmail !=  "" && PenumpangTelepon !=  "" && PenumpangBelakang !=  "" && PenumpangDepan !=  "" && PenumpangTitle !=  ""))' (click)="order()">order</button>
+        </div>
+    </div>
+
+    <div style="width: 30%; height: 30%; border: 1px solid black; border-radius: 10px; padding: 10px;">
+        <div style="display: flex; justify-content: space-between;" (click)="gotoDetail()">
+            <label for="">{{CurrentTrain.Name}}</label>
+            <label for="">Detail</label>
+        </div>
+        <div class="makeItARow"  style="width: 100%; display: flex; justify-content: space-between;">
+            <label for="">{{CurrentTrain.StartLocation}}-{{CurrentTrain.EndLocation}}</label>
+            <label for="">{{CurrentTrain.StartTime}}</label>
+        </div>
+        <div>
+            <label for="">Harga</label>
+        </div>
+        <div class="makeItARow" style="justify-content: space-between;">
+            <label for="">Orang(x{{penghubung.quantity}})</label>
+            <label for="">IDR {{CurrentTrain.Price * penghubung.quantity}}</label>
+        </div>
+        <hr>
+        <div class="makeItARow" style="justify-content: space-between;">
+            <label for="">Total Pembayaran</label>
+            <label for="">IDR {{CurrentTrain.Price * penghubung.quantity}}</label>
+        </div>
+    </div>
+</div>
+<div>
+    Detail Penumpang
+</div>
+<div *ngFor="let item of itemBarbar; let i = index">
+    <div *ngIf="i < penghubung.quantity">
+        <div>
+            <label for="">Penumpang {{i+1}}</label>
+        </div>
+        <input type="text" placeholder="title">
+        <input type="text" placeholder="name">
+        <input type="text" placeholder="tanngal lahir">
+    </div>
+</div>

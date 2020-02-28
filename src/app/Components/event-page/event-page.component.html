@@ -1,0 +1,149 @@
+
+<div class="slide-container" style="z-index: 1;">
+    <figure class="image-container">
+        <img src="./../../../assets/slider1.jpg" height="400px">
+        <img src="./../../../assets/slider2.jpg" height="400px">
+        <img src="./../../../assets/slider3.jpg" height="400px">
+        <img src="./../../../assets/slider4.jpg" height="400px">
+        <img src="./../../../assets/slider5.jpg" height="400px">
+        <img src="./../../../assets/slider1.jpg" height="400px">
+    </figure>
+</div>
+<div class="goingAnyWhereBox">
+    <div class="makeItARow" style="justify-content: space-between; background-color: aliceblue;">
+        <div class="makeItAColumnLeft" style="margin-left: 10px">
+            <label>Hey, you</label>
+            <label style="font-weight: bold">Going Any Where ?</label>
+        </div>
+    </div>
+    <div class="makeItARow" style="justify-content: space-between; padding: 30px">
+        <div style="display: flex; align-items: center">
+            <img src="./../../../../../assets/GoingAnyWhere/event.png">
+            <label for="">Booking Hotel Murah Online dengan Harga Promo</label>
+        </div>
+        <div>
+            <label for="">Pencarian Terakhir</label>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 30px">
+        <div class="oneFourthBoxdropdown">
+            <div class="makeItARow">
+                <label for="">choose: </label>
+                <input type="text" readonly [(ngModel)]="kategori" style="outline: none;">
+            </div>
+            <div class="dropdownContent">
+                <div (click)="semua()" class="dropdown1Content">
+                    semua
+                </div>
+                <div (click)="activity()" class="dropdown1Content">
+                    aktivity
+                </div>
+                <div (click)="attraction()" class="dropdown1Content">
+                    attraction
+                </div>
+                <div (click)="event()" class="dropdown1Content">
+                    events
+                </div>
+            </div>
+        </div>   
+        <div>
+            <button (click)="search()">search</button>
+        </div>
+    </div>
+</div>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <label for="">Penawaran Terbaik</label>
+    <label for="">Temukan harga terbaik untuk liburan sempurna Anda.</label>
+</div>
+<div style="display: flex; justify-content: center;">
+    <div *ngFor="let event of showedEvents" style="display: inline-flex; width: 25%;">
+        <div (click)="gotoDetail(event.Id)" id={{event.Id}} style="width:100%; height:500px; display:inline-flex; flex-direction:column; margin: 10px; border-radius:10px; border:1px solid grey; padding: 10px;">
+            <img style=" border-radius:10px; height:75%; width:100%; margin-bottom:20px;" src={{event.Tumbnail}}>
+            <div style="height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+                <label>{{event.Title}}</label>
+                <hr>
+                <div style="display:flex; justify-content: space-between;">
+                    <label>muali dari</label>
+                    <label>{{penghubung.Currency
+                    }} {{event.Price}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <label for="">Trending Activities</label>
+    <label for="">Temukan harga terbaik untuk liburan sempurna Anda.</label>
+</div>
+<div style="display: flex; justify-content: center;">
+    <div *ngFor="let event of showedEvents" style="display: inline-flex; width: 25%;">
+        <div (click)="gotoDetail(event.Id)" id={{event.Id}} style="width:100%; height:500px; display:inline-flex; flex-direction:column; margin: 10px; border-radius:10px; border:1px solid grey; padding: 10px;">
+            <img style=" border-radius:10px; height:75%; width:100%; margin-bottom:20px;" src={{event.Tumbnail}}>
+            <div style="height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+                <label>{{event.Title}}</label>
+                <hr>
+                <div style="display:flex; justify-content: space-between;">
+                    <label>muali dari</label>
+                    <label>IDR {{event.Price}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <label for="">Trending Attractions</label>
+    <label for="">Temukan harga terbaik untuk liburan sempurna Anda.</label>
+</div>
+<div style="display: flex; justify-content: center;">
+    <div *ngFor="let event of showedEvents" style="display: inline-flex; width: 25%;">
+        <div (click)="gotoDetail(event.Id)" id={{event.Id}} style="width:100%; height:500px; display:inline-flex; flex-direction:column; margin: 10px; border-radius:10px; border:1px solid grey; padding: 10px;">
+            <img style=" border-radius:10px; height:75%; width:100%; margin-bottom:20px;" src={{event.Tumbnail}}>
+            <div style="height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+                <label>{{event.Title}}</label>
+                <hr>
+                <div style="display:flex; justify-content: space-between;">
+                    <label>muali dari</label>
+                    <label>IDR {{event.Price}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <label for="">Trending Events</label>
+    <label for="">Temukan harga terbaik untuk liburan sempurna Anda.</label>
+</div>
+<div style="display: flex; justify-content: center;">
+    <div *ngFor="let event of showedEvents" style="display: inline-flex; width: 25%;">
+        <div (click)="gotoDetail(event.Id)" id={{event.Id}} style="width:100%; height:500px; display:inline-flex; flex-direction:column; margin: 10px; border-radius:10px; border:1px solid grey; padding: 10px;">
+            <img style=" border-radius:10px; height:75%; width:100%; margin-bottom:20px;" src={{event.Tumbnail}}>
+            <div style="height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+                <label>{{event.Title}}</label>
+                <hr>
+                <div style="display:flex; justify-content: space-between;">
+                    <label>muali dari</label>
+                    <label>IDR {{event.Price}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- zigy -->
+
+<!-- <div (click)="gotoDetail(1)" id="1" style="width:25%; height:500px; display:inline-flex; flex-direction:column; margin: 10px; border-radius:10px; border:1px solid grey; padding: 10px;">
+    <img style=" border-radius:10px; height:75%; width:100%; margin-bottom:20px;" src="1">
+    <div style="height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+      <label>event.Title+</label>
+      //<hr>
+      <div style="display:flex; justify-content: space-between;">
+          <label>muali dari</label>
+          <label>IDR event.Price+</label>
+      </div>
+    </div>
+</div> -->

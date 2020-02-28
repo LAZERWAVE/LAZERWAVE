@@ -1,0 +1,94 @@
+.makeItAColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.makeItARow{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+//slider thingys
+.slide-container{
+    padding-bottom: 50px;
+    margin-bottom: -150px;
+    overflow: hidden;
+}
+
+.image-container{
+    position: relative;
+    width: 600%;
+    margin: 0px;
+    left: 0px;
+    animation: 20s slider infinite;
+    z-index: -1;
+}
+
+.image-container img{
+    width: 16.6667%
+}
+
+//going anywhere boxes
+.goingAnyWhereBox{
+    margin: 50px;
+    z-index: 2;  
+    border-radius: 10px;
+    box-shadow: 1px 1px 7px black;
+}
+
+
+
+@keyframes slider{
+    0%{
+        left: 0%;
+    }
+
+    20%{
+        left: 0%;
+    }
+
+    25%{
+        left: -100%;
+    }
+
+    35%{
+        left: -100%;
+    }
+
+    40%{
+        left: -200%;
+    }
+
+    55%{
+        left: -200%;
+    }
+
+    60%{
+        left: -300%;
+    }
+
+    75%{
+        left: -300%;
+    }
+
+    80%{
+        left: -400%;
+    }
+
+    95%{
+        left: -400%;
+    }
+
+    100%{
+        left: -500%;
+    }
+
+    115%{
+        left: -500%;
+    }
+
+    120%{
+        left: -600%;
+    }
+}

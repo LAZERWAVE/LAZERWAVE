@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <div style="margin-bottom: 40px">
+        <div>
+            <label style="font-weight: bold">Log in/Daftar</label>
+    
+        </div>
+        <div>
+            <label style="color: grey; sfont-size: 15px">Perjalanan serumu mulai dari sini</label>
+        </div>
+    </div>
+    <div style="margin-bottom: 20px; display: flex">
+        <input type="text" placeholder="Nomor Ponsel atau Email" style="width: 100%; height: 35px; padding-left: 15px;" [(ngModel)]="email">
+    </div>
+    
+    <div *ngIf="users[0] != null" class="makeItARow" style="margin-bottom: 15px">
+        <input *ngIf="show2.checked==false" type="password" placeholder="Password" style="width: 80%; height: 35px; padding-left: 15px;" [(ngModel)]="pass">
+        <input *ngIf="show2.checked" type="text" placeholder="Password" style="width: 80%; height: 35px; padding-left: 15px;" [(ngModel)]="pass">
+        <mat-button-toggle style="height: 35px; width: 10%; font-size: 10px;" #show2></mat-button-toggle>
+    </div>
+    
+    
+    
+    
+    <div class="lanjutB">
+        <a style="color: blue; width: 100%; display: flex; justify-content: center" (click)="sumbit()">LANJUTKAN</a>
+    </div>
+    
+    
+    
+    
+    <div style="margin-top: 20px; margin-bottom: 20px; display: flex; justify-content: center">
+        <label style="color: grey; font-size: 10px">---atau dengan---</label>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="gugel()">
+            <img src="./../../../../assets/G-oogle.png" width="25px" height="25px">
+            <google-signin></google-signin>
+        </div>
+        <div class="clickable" style="border: 1px solid lightgrey; display: flex; padding: 10px; justify-content: flex-start; align-content: center;" (click)="facebuk()">
+            <img src="./../../../../assets/F-acebook.png" width="25px" height="25px">
+            <app-facebook-sign-in></app-facebook-sign-in>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center"> 
+        <div>
+            <label style="color: grey; font-size: 10px">Dengan mendaftar kamu menyetujui Kebiduckan Privvs</label>
+        </div>
+        <div>
+            <label style="color: grey; font-size: 10px"> dan Syarat & Ketentuan</label>
+        </div>
+        <div>
+            <label style="color: grey; font-size: 10px">----------------</label>
+        </div>
+    </div>
+    
+
+</body>
+</html> 
+
+
+
+
+ <!-- coba coba -->
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Host Binding</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+    <script src="https://unpkg.com/zone.js@0.6.25?main=browser"></script>
+    <script src="https://unpkg.com/reflect-metadata@0.1.3"></script>
+    <script src="https://unpkg.com/systemjs@0.19.27/dist/system.src.js"></script>
+
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+
+  <body>
+    <p>adsf</p>
+    <div class="g-signin2" data-onsuccess="onSignIn">
+        <button>sdsd</button>
+    </div>
+  </body>
+</html> -->

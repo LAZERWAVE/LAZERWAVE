@@ -1,0 +1,33 @@
+<div class="makeItARow">
+    <div class="makeItAColumn" style="width: 25%;border: 1px solid black; border-radius: 10px;">
+      <label for="">Rentang Harga</label>
+      <label for="">Sesuaikan harga dengan budget Anda</label>
+      <div class="makeItARow">
+        <input [(ngModel)]="MinVal" placeholder="Min" type="text">
+        <input [(ngModel)]="MaxVal" placeholder="Max" type="text">
+      </div>
+      <label for="">Kategori</label>
+      <input [(ngModel)]="Kategori" type="text">
+      <label>Pilih Country</label>
+      <input [(ngModel)]="Country" type="text">
+      <div>
+        <button (click)="filter()">Filter</button>
+        <button (click)="reset()">reset</button>
+      </div>
+    </div>
+      <div #list>
+        <div *ngFor="let event of ShowEvent" style="display: inline-flex; width: 25%;">
+          <div (click)="gotoDetail(event.Id)" id={{event.Id}} style="width:100%; height:500px; display:inline-flex; flex-direction:column; margin: 10px; border-radius:10px; border:1px solid grey; padding: 10px;">
+                <img style=" border-radius:10px; height:75%; width:100%; margin-bottom:20px;" src={{event.Tumbnail}}>
+              <div style="height:23%; display:flex; flex-direction:column; justify-content: space-between;">
+                  <label>{{event.Title}}</label>
+                  <hr>
+                  <div style="display:flex; justify-content: space-between;">
+                      <label>muali dari</label>
+                      <label>{{penghubung.Currency}} {{event.Price}}</label>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
