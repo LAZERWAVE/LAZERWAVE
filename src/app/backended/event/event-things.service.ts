@@ -69,7 +69,7 @@ export class EventThingsService {
       },
       fetchPolicy:  'no-cache'
     }).pipe(map(
-      result => result.data.GetEventById 
+      result => result.data.GetEventById
     ))
   }
 
