@@ -15,7 +15,7 @@
 <div *ngIf="EventInterfaces[0] == null">
   Loading....
 </div>
-<div *ngIf="EventInterfaces[0] != null">
+<div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef> Id. </th>
@@ -51,54 +51,130 @@
   [pageSizeOptions]="[5]">
   </mat-paginator>
 </div>
+
 <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
   <div>
     <label for="">Title</label>
-    <input type="text">
+    <div>
+      <div class="toolbar">
+          <ul class="tool-list">
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('justifyLeft')"
+                      class="tool--btn">
+                      <i class=' fas fa-align-left'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button"
+                      (click)="tets('justifyCenter')"
+                      class="tool--btn">
+                      <i class=' fas fa-align-center'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('bold')"
+                      class="tool--btn">
+                      <i class=' fas fa-bold'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('italic')"
+                      class="tool--btn">
+                      <i class=' fas fa-italic'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('underline')"
+                      class="tool--btn">
+                      <i class=' fas fa-underline'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('insertOrderedList')"
+                      class="tool--btn">
+                      <i class=' fas fa-list-ol'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('insertUnorderedList')"
+                      class="tool--btn">
+                      <i class=' fas fa-list-ul'></i>
+                  </button>
+              </li>
+              <li class="tool">
+                  <button 
+                      type="button" 
+                      (click)="tets('createlink')"
+                      class="tool--btn">
+                      <i class=' fas fa-link'></i>
+                  </button>
+              </li>
+          </ul>
+      </div>
+      <div id="output" contenteditable="true"></div>
+  </div>
   </div>
   <div>
     <label for="">Price</label>
-    <input type="text">
+    <input [(ngModel)]="insPrice" type="text">
   </div>
   <div>
     <label for="">Tumbnail</label>
-    <input type="text">
+    <input [(ngModel)]="insTumbnail" type="text">
   </div>
   <div>
     <label for="">kategori</label>
-    <input type="text">
+    <input [(ngModel)]="insKategori" type="text">
   </div>
   <div>
-    <button>Insert</button>
+    <button (click)="insert()">Insert</button>
   </div>
 </div>
 <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
   <div>
     <label for="">Id</label>
-    <input type="text">
+    <input [(ngModel)]="upId" type="text">
   </div>
   <div>
     <label for="">Title</label>
-    <input type="text">
+    <input  [(ngModel)]="upTitle" type="text">
   </div>
   <div>
     <label for="">Price</label>
-    <input type="text">
+    <input [(ngModel)]="upPrice" type="text">
   </div>
   <div>
     <label for="">Tumbnail</label>
-    <input type="text">
+    <input [(ngModel)]="upTumbnail" type="text">
   </div>
   <div>
     <label for="">kategori</label>
-    <input type="text">
+    <input  [(ngModel)]="upKategori" type="text">
   </div>
   <div>
-    <button>Update</button>
+    <button (click)="update()" >Update</button>
   </div>
 </div>
 <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
   <label for="">Id</label>
-  <input type="text">
-  <button>Delete</button>
+  <input [(ngModel)]="delId" type="text">
+  <button (click)="delete()">Delete</button>
+  <div *ngIf="sure">
+    <label for="">are you sure ?</label>
+    <button style="width: 10%;" (click)="yes()">         yes           </button>
+    <button style="width: 10%;" (click)="no()">         no            </button>
+  </div>
 </div>

@@ -1,0 +1,122 @@
+<div class="makeItAColumn" style="width: 25%;border: 1px solid black; border-radius: 10px;">
+    <label for="">Categori</label>
+    <input [(ngModel)]="Category" type="text">
+    <div>
+      <button (click)="getData()">Filter</button>
+      <button (click)="reset()">reset</button>
+    </div>
+  </div>
+  <div *ngIf="BlogInterfaces[0] == null">
+    Loading....
+  </div>
+  <div>
+    <table mat-table [dataSource]="dataSourcee" class="mat-elevation-z8">
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="Tumbnail">
+        <th mat-header-cell *matHeaderCellDef> Tumbnail </th>
+        <td mat-cell *matCellDef="let element"> {{element.Tumbnail}} </td>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="Category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.Category}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Content">
+        <th mat-header-cell *matHeaderCellDef> Content </th>
+        <td mat-cell *matCellDef="let element"> {{element.Content}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="View">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.View}} </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator
+    [pageSizeOptions]="[5]">
+    </mat-paginator>
+  </div>
+  
+  <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+    <div>
+      <label for="">Title</label>
+      <input [(ngModel)]="insTitle" type="text">
+    </div>
+
+    <div>
+      <label for="">View</label>
+      <input [(ngModel)]="insView" type="text">
+    </div>
+
+    <div>
+      <label for="">Tumbnail</label>
+      <input [(ngModel)]="insTumbnail" type="text">
+    </div>
+
+    <div>
+      <label for="">Category</label>
+      <input [(ngModel)]="insCategory" type="text">
+    </div>
+
+    <div>
+      <label for="">Content</label>
+      <input [(ngModel)]="insContent"  type="text">
+    </div>
+    <div>
+      <button (click)="insert()">Insert</button>
+    </div>
+  </div>
+  <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+    <div>
+      <label for="">Id</label>
+      <input [(ngModel)]="upId" type="text">
+    </div>
+    <div>
+      <label for="">Title</label>
+      <input  [(ngModel)]="upTitle" type="text">
+    </div>
+    <div>
+      <label for="">View</label>
+      <input [(ngModel)]="upView" type="text">
+    </div>
+    <div>
+      <label for="">Tumbnail</label>
+      <input [(ngModel)]="upTumbnail" type="text">
+    </div>
+    <div>
+      <label for="">Category</label>
+      <input  [(ngModel)]="upCategory" type="text">
+    </div>
+    <div>
+    <label for="">Content</label>
+    <input [(ngModel)]="upContent" type="text">
+    </div>
+    <div>
+      <button (click)="update()" >Update</button>
+    </div>
+  </div>
+  <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+    <label for="">Id</label>
+    <input [(ngModel)]="delId" type="text">
+    <button (click)="delete()">Delete</button>
+    <div *ngIf="sure">
+      <label for="">are you sure ?</label>
+      <button style="width: 10%;" (click)="yes()">         yes           </button>
+      <button style="width: 10%;" (click)="no()">         no            </button>
+    </div>
+  </div>
+  

@@ -1,0 +1,37 @@
+<div style="display: flex; flex-direction: row;">
+    <div *ngFor="let p of CurrPromo" style="width: 60%; border: 1px solid black; padding: 10px;">
+        <img src="./../../../assets/blog/{{p.Tumbnail}}" alt="">
+        <div>
+            <h1>
+                {{p.Name}}
+            </h1>
+        </div>
+
+        <div>
+            {{p.Content}}
+        </div>
+
+        <h2>
+             periode : {{p.periode}}
+        </h2>
+        <h2>
+            Kode : {{p.Kode}}
+        </h2>
+    </div>
+    <div style="width: 30%;">
+        <div *ngFor="let p of AllPromo">
+
+            <div>
+                <img style="width: 30px; height: 30px;" src="./../../../assets/blog/{{p.Tumbnail}}" alt="">        
+                {{p.Name}}
+                    
+            </div>
+
+        </div>
+    </div>
+</div>
+<div>
+    <share-button button="facebook" text="Share" [showText]="true"></share-button>
+    <share-button button="line" text="Line" [showText]="true"></share-button>
+    <share-button button="whatsapp" text="wa"></share-button>
+</div>

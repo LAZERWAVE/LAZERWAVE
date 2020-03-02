@@ -3,6 +3,8 @@ import { EventThingsService } from 'src/app/backended/event/event-things.service
 import { EventCard } from 'src/app/Model/EventCard';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material';
+import { async } from 'rxjs/internal/scheduler/async';
+import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
 
 
 
@@ -21,7 +23,7 @@ export interface EventCardInterface {
 })
 export class ManageEventComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  constructor(public eventService: EventThingsService) { }
+  constructor(public chat:ChatThingsService,public eventService: EventThingsService) { }
 
   Events: EventCard[];
   ShowEvent: EventCard[];
@@ -32,6 +34,7 @@ export class ManageEventComponent implements OnInit {
   ngOnInit() {
    this.getData();
    this.reset();
+   this.init();
   }
 
 
@@ -46,7 +49,7 @@ export class ManageEventComponent implements OnInit {
     this.EventInterfaces = [x]
     this.EventInterfaces.pop()
     this.ShowEvent.forEach(e => {
-      console.log(e)
+
       let x : EventCardInterface;
       x={
         Id: e.Id,
@@ -61,6 +64,15 @@ export class ManageEventComponent implements OnInit {
     this.dataSource.paginator = this.paginator
   }
 
+  tets(cmd: any){
+		if(cmd === 'createlink') {
+			let url = prompt("Enter the link here: ", "http:\/\/");
+			document.execCommand(cmd, false, url);
+		} else {
+			document.execCommand(cmd, false, null);
+		}
+  }
+
   getData(){
     this.EventInterfaces = [null]
     this.eventService.Get3Event().subscribe(
@@ -70,8 +82,80 @@ export class ManageEventComponent implements OnInit {
       }
     );
   }
+  delId: number
+  init(){
+    this.insTitle=""
+    this.insPrice=0
+    this.insTumbnail=""
+    this.insKategori=""
+    this.sure=false;
+    this.delId=0;
+    this.upId = 0;
+    this.upTitle = ""
+    this.upPrice=0
+    this.upTumbnail=""
+    this.upKategori=""
+  }
 
+  insTitle: string
+  insPrice: number
+  insTumbnail: string;
+  insKategori: string;
+  insert(){
+    if(this.insTitle == "" || this.insPrice < 1 || this.insTumbnail =="" || this.insKategori == ""){
+      alert("field cannot be empty")
+      return;
+    }
+    this.eventService.InsertEvent(this.insKategori,this.insPrice,this.insTitle,this.insTumbnail).subscribe(
+      async queryy => {
+        alert("insert succes <3");
+        await this.getData();
+      }
+    )
+    this.chat.emit("event","new data");
+    this.init();
+  }
   
+  sure: boolean
+  delete(){
+    if(this.delId <= 0){
+      alert("must be filled");
+      return;
+    }
+    this.sure=true;
+  }
+
+  yes(){
+    this.eventService.DeleteEvent(this.delId).subscribe(
+      async result =>{
+        await this.getData();
+      }
+    )
+    this.init();
+  }
+
+  no(){
+    this.init();
+  }
+
+  upId: number;
+  upTitle: string
+  upPrice: number
+  upTumbnail: string;
+  upKategori: string;
+  update(){
+    if(this.upTitle == "" || this.upPrice < 1 || this.upTumbnail =="" || this.upKategori == "" || this.upId <=0){
+      alert("field cannot be empty")
+      return;
+    }
+    this.eventService.UpdateEvent(this.upId,this.upKategori,this.upPrice,this.upTitle,this.upTumbnail).subscribe(
+      async result =>{
+        await this.getData()
+      }
+    )
+    this.init()
+  }
+
   reset(){
     this.MinVal=0;
     this.MaxVal=9000000;

@@ -1,0 +1,29 @@
+
+<div *ngFor="let b of Blogs">
+
+    <img style="height: 500px; width: 500px;" src="./../../../../assets/blog/{{b.Tumbnail}}" alt="">
+    <div>
+        <label for="">{{b.Content}}</label>
+    </div>
+</div>
+
+<div>
+    <h1 >
+        share It :D
+    </h1>
+    <share-button button="facebook" text="Share" [showText]="true"></share-button>
+    <share-button button="line" text="Line" [showText]="true"></share-button>
+    <share-button button="whatsapp" text="wa"></share-button>
+</div>
+
+<h1>
+    Trending
+</h1>
+<div *ngFor="let t of Trending">
+    <div (click)="gotoDetail(t.Id)">
+        <img style="height: 500px; width: 500px;" src="./../../../../assets/blog/{{t.Tumbnail}}" alt="">
+        <div>
+            <label for="">{{t.Title}}</label>
+        </div>
+    </div>
+</div>

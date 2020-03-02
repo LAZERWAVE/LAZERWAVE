@@ -73,7 +73,7 @@ export class EventThingsService {
     ))
   }
 
-  InsertUser(Kategori: string,Price: string,Title: string,Tumbnail: string):Observable<any>{
+  InsertEvent(Kategori: string,Price: number,Title: string,Tumbnail: string):Observable<any>{
     return this.apollo.mutate({
       mutation: gql`
         mutation InsertEvent($Kategori: String!,$Price: Int!,$Title: String!,$Tumbnail: String!){
@@ -87,15 +87,58 @@ export class EventThingsService {
         }
       `,
       variables:{
-        "Email": email,
-        "FirstName": FirstName,
-        "LastName": LastName,
-        "Password": pass,
-        "Phone": phone
+        "Kategori": Kategori,
+        "Price": Price,
+        "Title": Title,
+        "Tumbnail": Tumbnail
       },
       fetchPolicy: 'no-cache'
     })
   }
 
+
+  DeleteEvent(id: number):Observable<any>{
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation DeleteEvent($Id: Int!){
+          DeleteEvent(Id: $Id){
+            Id
+            Kategori
+            Price
+            Title
+            Tumbnail
+          }
+        }
+      `,
+      variables:{
+        "Id": id
+      },
+      fetchPolicy: 'no-cache'
+    })
+  }
+
+  UpdateEvent(id: number,Kategori: string,Price: number,Title: string,Tumbnail: string):Observable<any>{
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation UpdateEvent(,$Id: Int!$Kategori: String!,$Price: Int!,$Title: String!,$Tumbnail: String!){
+          UpdateEvent(Id: $Id,Kategori: $Kategori,Price: $Price,Title: $Title,Tumbnail: $Tumbnail){
+            Id
+            Kategori
+            Price
+            Title
+            Tumbnail
+          }
+        }
+      `,
+      variables:{
+        "Id": id,
+        "Kategori": Kategori,
+        "Price": Price,
+        "Title": Title,
+        "Tumbnail": Tumbnail
+      },
+      fetchPolicy: 'no-cache'
+    })
+  }
 }
 

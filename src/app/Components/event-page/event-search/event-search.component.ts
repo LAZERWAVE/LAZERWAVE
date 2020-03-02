@@ -10,6 +10,7 @@ import { Location } from './../../../Model/Location'
 import { runInThisContext } from 'vm';
 import { async } from 'rxjs/internal/scheduler/async';
 import { listenerCount } from 'cluster';
+import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
 
 @Component({
   selector: 'app-event-search',
@@ -28,7 +29,7 @@ export class EventSearchComponent implements OnInit {
   locations: Location[];
   RealLocation: Location[];
 
-  constructor(private cd : ChangeDetectorRef,public locationService: LocationThingysService,public eventService: EventThingsService, private router : Router,public penghubung: PenhubungService) { }
+  constructor(public chat:ChatThingsService,private cd : ChangeDetectorRef,public locationService: LocationThingysService,public eventService: EventThingsService, private router : Router,public penghubung: PenhubungService) { }
 
   ngOnInit() {
     this.reset();
@@ -39,7 +40,9 @@ export class EventSearchComponent implements OnInit {
         await this.getEvent();
       }
     )
-    
+    this.chat.listen("event").subscribe(e =>{
+      alert(e)
+    })
   }
 
   reset(){

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { PenhubungService } from '../../backended/penhubung.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router,public penghubung: PenhubungService) { }
 
   ngOnInit() {
   }
 
+  gotoBlog(){
+    if(this.penghubung.CurrentUser != null && this.penghubung.CurrentUser.FirstName == "admin"){
+      this.router.navigateByUrl("ManageBlog");
+      return;
+    } 
+    this.router.navigateByUrl("Blog")
+  }
 }

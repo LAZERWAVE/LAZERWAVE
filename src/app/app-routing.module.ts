@@ -9,6 +9,14 @@ import { RentPageComponent } from './Components/rent-page/rent-page.component'
 import { TrainPageComponent } from './Components/train-page/train-page.component'
 import { CheckoutPageComponent } from './Components/checkout-page/checkout-page.component';
 import { ManageEventComponent } from './Components/Admin-Manage/manage-event/manage-event.component';
+import { ManageTrainComponent } from './Components/Admin-Manage/manage-train/manage-train.component';
+import { BlogComponent } from './Components/blog/blog.component';
+import { ManageBlogComponent } from './Components/Admin-Manage/manage-blog/manage-blog.component'
+import { BlogDetailComponent } from './Components/blog/blog-detail/blog-detail.component';
+import { AccountComponent } from './Components/account/account.component'
+import { PromoComponent } from './Components/promo/promo.component';
+import { FlightComponent } from './Components/flight/flight.component'
+import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/manage-flight.component';
 
 const routes: Routes = [
   {path:'EventDetail',component: EventDetailPageComponent},
@@ -19,7 +27,15 @@ const routes: Routes = [
   {path:'CarRent',component:RentPageComponent},
   {path:'Train',component:TrainPageComponent},
   {path:'Checkout',component:CheckoutPageComponent},
-  {path:'ManageEvent',component:ManageEventComponent}
+  {path:'ManageEvent',component:ManageEventComponent},
+  {path:'ManageTrain',component:ManageTrainComponent},
+  {path:'Blog',component:BlogComponent},
+  {path:'ManageBlog',component:ManageBlogComponent},
+  {path:'BlogDetail',component:BlogDetailComponent},
+  {path:'Account',component:AccountComponent},
+  {path:'Promo',component:PromoComponent},
+  {path:'Flight',component:FlightComponent},
+  {path:'ManageFlight',component:ManageFlightComponent}
 ];
 
 @NgModule({

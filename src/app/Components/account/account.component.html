@@ -1,0 +1,57 @@
+<div>
+    <div>
+        <label for="">Detail Akun</label>
+    </div>
+    <div>
+        <label for="">Disini kamu bisa mengatur akun kamu</label>
+    </div>
+</div>
+
+<div class="makeItARow">
+    <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+        <div>
+            <button (click)="togglePhone()">Phone</button>
+            <div *ngIf="showPhone">
+                <input [(ngModel)]="upPhone" type="text">
+                <button (click)="validatePhone()">save</button>
+            </div>
+        </div>
+        <div>
+            <button (click)="togglePassword()">Password</button>
+            <div *ngIf="showPassword">
+                <input (keyup)="tet()" [(ngModel)]="upPassword" type="password">
+                <button *ngIf="validPassword">save</button>
+            </div>
+        </div>
+        
+    </div>
+    <div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+        <div>
+            <label for="">Title</label>
+            <input [(ngModel)]="CurrUser.Title" type="text">
+        </div>
+        <div>
+            <label for="">First Name</label>
+            <input [(ngModel)]="CurrUser.FirstName" type="text">
+        </div>
+        <div>
+            <label for="">Last Name</label>
+            <input [(ngModel)]="CurrUser.LastName" type="text">
+        </div>
+        <div>
+            <label for="">Kota</label>
+            <input [(ngModel)]="CurrUser.Kota" type="text">
+        </div>
+        <div>
+            <label for="">Alamat</label>
+            <input [(ngModel)]="CurrUser.Alamat" type="text">
+        </div>
+        <div>
+            <label for="">Kode Pos</label>
+            <input [(ngModel)]="CurrUser.Kode" type="text">
+        </div>
+        <div>
+            <button (click)="save()">save</button>
+        </div> 
+    </div>
+</div>

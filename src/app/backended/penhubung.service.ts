@@ -16,6 +16,7 @@ export class PenhubungService {
   public CurrentTrain: Train;
   public registering: boolean;
   public Currency: string;
+  public BlogId: number;
 
   constructor() { }
 

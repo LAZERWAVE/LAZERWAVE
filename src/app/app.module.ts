@@ -34,6 +34,16 @@ import { FacebookComponent } from './Components/facebook/facebook.component';
 import { ManageEventComponent } from './Components/Admin-Manage/manage-event/manage-event.component';
 import { Login2Component } from './Components/Login/login2/login2.component';
 import { Login3Component } from './Components/Login/login3/login3.component';
+import { ManageTrainComponent } from './Components/Admin-Manage/manage-train/manage-train.component';
+import { BlogComponent } from './Components/blog/blog.component';
+import { ManageBlogComponent } from './Components/Admin-Manage/manage-blog/manage-blog.component';
+import { BlogDetailComponent } from './Components/blog/blog-detail/blog-detail.component';
+import { ShareButtonModule } from '@ngx-share/button';
+import { AccountComponent } from './Components/account/account.component';
+import { PromoComponent } from './Components/promo/promo.component';
+import { FlightComponent } from './Components/flight/flight.component';
+import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/manage-flight.component';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +73,15 @@ import { Login3Component } from './Components/Login/login3/login3.component';
     ManageEventComponent,
     Login2Component,
     Login3Component,
+    ManageTrainComponent,
+    BlogComponent,
+    ManageBlogComponent,
+    BlogDetailComponent,
+    AccountComponent,
+    PromoComponent,
+    FlightComponent,
+    ManageFlightComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -72,7 +91,8 @@ import { Login3Component } from './Components/Login/login3/login3.component';
     FormsModule,
     GraphQLModule,
     HttpClientModule,
-    LeafletModule.forRoot()
+    LeafletModule.forRoot(),
+    ShareButtonModule,
   ],
   entryComponents: [
     LoginComponent,
@@ -81,6 +101,7 @@ import { Login3Component } from './Components/Login/login3/login3.component';
     TrainDetailComponent,
     Login2Component,
     Login3Component,
+  
   ],
   providers: [
     

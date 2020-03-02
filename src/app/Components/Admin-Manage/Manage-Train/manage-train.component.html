@@ -1,0 +1,152 @@
+<div class="makeItAColumn" style="width: 25%;border: 1px solid black; border-radius: 10px;">
+    <div>
+        <label for="">Kelas</label>
+        <input [(ngModel)]="Class" type="text">
+    </div>
+    <div>
+        <label for="">Waktu</label>
+        <div>
+            <input [(ngModel)]="TimeMin" type="text" placeholder="Min">
+            <input [(ngModel)]="TimeMax" type="text" placeholder="Max">
+        </div>
+    </div>
+    <div>
+        <label for="">Nama Kereta</label>
+        <input [(ngModel)]="Name" type="text">   
+    </div>
+    <button (click)="reset()">reset</button>
+    <button (click)="getTrain()">filter</button>
+</div>
+<div *ngIf="TrainInterfaces[0] == null">
+  Loading....
+</div>
+<div style="width: 100%;">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Class">
+      <th mat-header-cell *matHeaderCellDef> Class. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Class}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="StartTime">
+      <th mat-header-cell *matHeaderCellDef> StartTime. </th>
+      <td mat-cell *matCellDef="let element"> {{element.StartTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="EndTime">
+      <th mat-header-cell *matHeaderCellDef> EndTime. </th>
+      <td mat-cell *matCellDef="let element"> {{element.EndTime}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Price">
+      <th mat-header-cell *matHeaderCellDef> Price. </th>
+      <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="StartLocation">
+      <th mat-header-cell *matHeaderCellDef> StartLocation. </th>
+      <td mat-cell *matCellDef="let element"> {{element.StartLocation}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="EndLocation">
+      <th mat-header-cell *matHeaderCellDef> EndLocation. </th>
+      <td mat-cell *matCellDef="let element"> {{element.EndLocation}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+  [pageSizeOptions]="[5]">
+  </mat-paginator>
+</div>
+
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <div>
+    <label for="">Name</label>
+    <input [(ngModel)]="insName" type="text">
+  </div>
+  <div>
+    <label for="">Class</label>
+    <input [(ngModel)]="insClass" type="text">
+  </div>
+  <div>
+    <label for="">StartTime</label>
+    <input [(ngModel)]="insStartTime" type="text">
+  </div>
+  <div>
+    <label for="">EndTime</label>
+    <input [(ngModel)]="insEndTime" type="text">
+  </div>
+  <div>
+      <label for="">Price</label>
+      <input [(ngModel)]="insPrice" type="text">
+  </div>
+  <div>
+      <label for="">StartLocation</label>
+      <input [(ngModel)]="insStartLocation" type="text">
+  </div>
+  <div>
+      <label for="">EndLocation</label>
+      <input [(ngModel)]="insEndLocation" type="text">
+  </div>
+  <div>
+    <button (click)="insert()">Insert</button>
+  </div>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <div>
+    <label for="">Id</label>
+    <input [(ngModel)]="upId" type="text">
+  </div>
+  <div>
+    <label for="">Name</label>
+    <input [(ngModel)]="upName" type="text">
+  </div>
+  <div>
+    <label for="">Class</label>
+    <input [(ngModel)]="upClass" type="text">
+  </div>
+  <div>
+    <label for="">StartTime</label>
+    <input [(ngModel)]="upStartTime" type="text">
+  </div>
+  <div>
+    <label for="">EndTime</label>
+    <input [(ngModel)]="upEndTime" type="text">
+  </div>
+  <div>
+      <label for="">Price</label>
+      <input [(ngModel)]="upPrice" type="text">
+  </div>
+  <div>
+      <label for="">StartLocation</label>
+      <input [(ngModel)]="upStartLocation" type="text">
+  </div>
+  <div>
+      <label for="">EndLocation</label>
+      <input [(ngModel)]="upEndLocation" type="text">
+  </div>
+  <div>
+    <button (click)="update()" >Update</button>
+  </div>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <label for="">Id</label>
+  <input [(ngModel)]="delId" type="text">
+  <button (click)="delete()">Delete</button>
+  <div *ngIf="sure">
+    <label for="">are you sure ?</label>
+    <button style="width: 10%;" (click)="yes()">         yes           </button>
+    <button style="width: 10%;" (click)="no()">         no            </button>
+  </div>
+</div>

@@ -2,11 +2,12 @@
 <div style="background-color: whitesmoke; display: flex; flex-direction: row; justify-content: space-between;">
     <div>
         <a>Unduh Aplikasi tiket.com</a>
-        <a>Promo</a>
+        <a (click)="gotoPromo()">Promo</a>
         <a>Pusat Bantuan</a>
     </div>
     <div>
-        <input [(ngModel)]="Languague" type="text">
+        <div id="google_translate_element"></div>
+        <input (change)="setLanguague()" [(ngModel)]="Languague" type="text">
         <input [(ngModel)]="Currency" (change)="test()" type="text">
     </div>
 </div>
@@ -15,7 +16,7 @@
 <div style="display: flex; justify-content: space-between">
     <span class=LeftHeader>
         <img (click)="gotoHome()" src="./../../../assets/Tiket_Logo.png" width="180" height="50">
-        <a>Pesawat</a>
+        <a (click)="gotoFlight()">Pesawat</a>
         <a>Hotel</a>
         <a (click)="gotoTrain()">Kereta Api</a>
         <a (click)="gotoRent()">Sewa Mobil</a>
@@ -29,7 +30,7 @@
             <a class="daftarButton">Daftar</a>
         </div>
         <div *ngIf="penghubung.CurrentUser != null">
-            <a style="border: 1px solid black; border-radius: 10px;">{{penghubung.CurrentUser.FirstName}}</a>
+            <a (click)="gotoAccount()" style="border: 1px solid black; border-radius: 10px;">{{penghubung.CurrentUser.FirstName}}</a>
         </div>
     </span>
 </div>

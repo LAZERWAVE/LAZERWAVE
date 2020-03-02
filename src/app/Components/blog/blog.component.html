@@ -1,0 +1,87 @@
+<h1>
+    blog page
+</h1>
+<div>
+    <button (click)="toggleText()">Add Blog</button>
+    <div  *ngIf="create">
+        <div class="toolbar">
+            <ul class="tool-list">
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('justifyLeft')"
+                        class="tool--btn">
+                        <i class=' fas fa-align-left'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button"
+                        (click)="tets('justifyCenter')"
+                        class="tool--btn">
+                        <i class=' fas fa-align-center'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('bold')"
+                        class="tool--btn">
+                        <i class=' fas fa-bold'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('italic')"
+                        class="tool--btn">
+                        <i class=' fas fa-italic'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('underline')"
+                        class="tool--btn">
+                        <i class=' fas fa-underline'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('insertOrderedList')"
+                        class="tool--btn">
+                        <i class=' fas fa-list-ol'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('insertUnorderedList')"
+                        class="tool--btn">
+                        <i class=' fas fa-list-ul'></i>
+                    </button>
+                </li>
+                <li class="tool">
+                    <button 
+                        type="button" 
+                        (click)="tets('createlink')"
+                        class="tool--btn">
+                        <i class=' fas fa-link'></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div id="output" contenteditable="true"></div>
+    </div>
+</div>
+<div style="display: inline-flex ;" *ngFor="let b of RealBlogs">
+   <div style="padding: 10px; margin: 10px; border: 1px solid black;">
+        <div (click)="gotoDetail(b.Id)">
+            <img style="width: 30%; height: 20%; " src="./../../../assets/blog/{{b.Tumbnail}}" alt="sdfs">
+        </div>
+        <div>
+           {{b.Title}}
+        </div>
+   </div>     
+</div>

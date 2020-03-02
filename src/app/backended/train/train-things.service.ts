@@ -61,4 +61,88 @@ export class TrainThingsService {
       result => result.data.GetTrainByStartAndEnd
     ))
   }
+
+
+  InsertTrain(name: string,Class: string, startTime: number,endTime: number,price: number,startLocation: string,endLocation: string):Observable<any>{
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation InsertTrain($name: String!,$class: String!,$start_time: Float!,$end_time: Float!,$price: Int!,$start_location: String!,$end_location: String!){
+          InsertTrain(Name: $name,Class: $class,StartTime: $start_time,EndTime: $end_time,Price: $price,StartLocation: $start_location,EndLocation: $end_location){
+            Class
+            EndLocation
+            EndTime
+            Id
+            Name
+            Price
+            StartLocation
+            StartTime
+          }
+        }
+      `,
+      variables:{
+        "class": Class,
+        "end_location": endLocation,
+        "end_time": endTime,
+        "name": name,
+        "price": price,
+        "start_location": startLocation,
+        "start_time": startTime
+      },
+      fetchPolicy: 'no-cache'
+    })
+  }
+
+
+  DeleteTrain(id: number):Observable<any>{
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation DeleteTrain($Id: Int!){
+          DeleteTrain(Id: $Id){
+            Class
+            EndLocation
+            EndTime
+            Id
+            Name
+            Price
+            StartLocation
+            StartTime
+          }
+        }
+      `,
+      variables:{
+        "Id": id
+      },
+      fetchPolicy: 'no-cache'
+    })
+  }
+
+  UpdateTrain(id: number,name: string,Class: string, startTime: number,endTime: number,price: number,startLocation: string,endLocation: string):Observable<any>{
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation UpdateTrain($Id: Int!,$name: String!,$class: String!,$start_time: Float!,$end_time: Float!,$price: Int!,$start_location: String!,$end_location: String!){
+          UpdateTrain(Id: $Id,Name: $name,Class: $class,StartTime: $start_time,EndTime: $end_time,Price: $price,StartLocation: $start_location,EndLocation: $end_location){
+            Class
+            EndLocation
+            EndTime
+            Id
+            Name
+            Price
+            StartLocation
+            StartTime
+          }
+        }
+      `,
+      variables:{
+        "Id": id,
+        "class": Class,
+        "end_location": endLocation,
+        "end_time": endTime,
+        "name": name,
+        "price": price,
+        "start_location": startLocation,
+        "start_time": startTime
+      },
+      fetchPolicy: 'no-cache'
+    })
+  }
 }

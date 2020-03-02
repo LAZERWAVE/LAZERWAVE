@@ -4,8 +4,21 @@ console.log('Server Started');
 
 io.on('connection', function(socket) {
     console.log('User Connected');
+
     socket.on('chat', function(msg) {
         io.emit('chat', msg);
+    });
+
+    socket.on('blog', function(msg) {
+	    io.emit('blog', msg);
+    });
+
+    socket.on('plane', function(msg) {
+		io.emit('plane', msg);
+    });
+
+    socket.on('event', function(msg) {
+			io.emit('event', msg);
     });
 });
 

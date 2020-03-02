@@ -23,6 +23,8 @@ export class LoginThingsService {
             LastName
             Password
             Phone
+            Languague
+            Title
           }
         }
       `,
@@ -43,6 +45,8 @@ export class LoginThingsService {
             LastName
             Password
             Phone
+            Languague
+            Title
           }
         }
       `,
@@ -66,6 +70,8 @@ export class LoginThingsService {
             LastName
             Password
             Phone
+            Languague
+            Title
           }
         }  
       `,

@@ -1,0 +1,82 @@
+<div class="makeItARow">
+    <div class="makeItAColumn">
+        {{StartLocation}}
+        <input [(ngModel)]="StartLocation" type="text" matTooltip="from">
+    </div>
+    <div class="makeItAColumn">
+        {{EndLocation}}
+        <input [(ngModel)]="EndLocation" type="text" matTooltip="to">
+    </div>
+
+    <input [(ngModel)]="FlightDate" [matDatepicker]="endDate">
+    <mat-datepicker-toggle [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>
+
+    <input [(ngModel)]="Quantity" type="text" matTooltip="jumlah">
+    <button (click)="getData()">change</button>
+</div>
+<div class="makeItARow"  style="width: 100%;">
+    <div style="border: 1px solid black; padding: 10px; border-radius: 10px; margin: 10px;">
+        <div>
+            <label (click)="toggleShowTransitDurasi()" for="">Transit Durasi</label>
+            <input [(ngModel)]="TransitDurasi" *ngIf="showTransitDurasi" type="text">
+        </div>
+        <div>
+            <label (click)="toggleShowDurasi()" for="">Durasi</label>
+            <input [(ngModel)]="Durasi" *ngIf="showDurasi" type="text">
+        </div>
+        <div>
+            <label (click)="toggleShowTime()" for="">Waktu</label>
+            <input [(ngModel)]="TimeStart" *ngIf="showTime" type="text">
+            <input [(ngModel)]="TimeEnd" *ngIf="showTime" type="text">
+        </div>
+        <div>
+            <label (click)="toggleShowMaskapai()" for="">Maskapai</label>
+            <input [(ngModel)]="Maskapai" *ngIf="showMaskapai" type="text">
+        </div>
+        <div>
+            <label (click)="toggleShowFasilitas()" for="">Fasilitas</label>
+            <input [(ngModel)]="Fasilitas" *ngIf="showFasilitas" type="text">
+        </div>
+        <div>
+            <label (click)="toggleShowTransit()" for="">Transit</label>
+            <input [(ngModel)]="Transit" *ngIf="showTransit" type="text">
+        </div>
+        <div>
+            <button (click)="getData()">filter</button>
+            <button (click)="reset()">reset</button>
+        </div>
+    </div>
+
+    <div style="width: 70%;">
+        <div *ngFor="let f of RealFlight; let i = index">
+            <div style="display: flex;">
+                <div class="makeItAColumn" style="width: 50%; border: 1px solid black; border-radius: 10px; padding: 10px;">    
+                    <div>
+                        {{f.Name}}
+                    </div>
+                    <div class="makeItARow" style="justify-content:  space-between; width: 100%;">
+                        <img style="width: 20px; height: 20px;" src="./../../../assets/blog/{{f.Tumbnail}}" alt="">
+                        <label for="">{{f.StartTime}}-{{f.EndTime}}</label>
+                        <label for="">{{f.Fasilitas}}</label>
+                        <label for="">{{f.Price}}</label>
+                    </div>
+                    <div class="makeItARow" style="justify-content:  space-between; width: 100%;">
+                        <button (click)="showTerbang(f.Id)">Detail Terbang</button>
+                        <button (click)="showHarga(f.Id)">Detail Harga</button>
+                        <button>Pilih</button>
+                    </div>
+                    <div *ngIf="showT[i]">
+                        <h2>Perjalanan dari {{f.StartLocation}}</h2>
+                        <h2>Ada {{f.Transit}} Transit dengan {{f.TransitTime}} jam</h2>
+                        <h2>Ada Fasilitas {{f.Fasilitas}}</h2>
+                        <h2>Perjalanan akhir di {{f.EndLocation}}</h2>
+                    </div>
+                    <div *ngIf="showH[i]">
+                        <h2>Harga Special dengan {{f.Price * Quantity}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
