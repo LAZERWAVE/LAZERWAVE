@@ -53,7 +53,7 @@ export class EventSearchComponent implements OnInit {
   }
 
   getEvent(){
-    this.eventService.GetAllEvent().subscribe(
+    this.eventService.GetFilterEvent(this.MinVal,this.MaxVal,this.Kategori).subscribe(
       async result => {
         this.Events = result;
         await this.filter();
@@ -72,36 +72,36 @@ export class EventSearchComponent implements OnInit {
     this.RealLocation.pop();
     this.locations.forEach(l =>{
       this.RealLocation.push(l);
-    })
+    }) 
     this.CurrEvent = this.Events[0];
 
     this.Events.forEach(e => {
-      if(e.Price >= this.MinVal && e.Price <= this.MaxVal){
-        if(this.Kategori=="Activity" || this.Kategori=="Attraction" || this.Kategori=="Event"){
-          console.log(this.Kategori+" "+e.Kategori)
-          if(this.Kategori == e.Kategori){
-            if(this.Country != null && this.Country != ""){
-              this.RealLocation.forEach(l =>{
-                if(l.Country == this.Country && l.Id == e.Id){
-                  this.ShowEvent.push(e)
-                }
-              })
-            }else{
-              this.ShowEvent.push(e);
-            }
-          }
-        }else{
-          if(this.Country != null && this.Country != ""){
-            this.RealLocation.forEach(l =>{
-              if(l.Country == this.Country && l.Id == e.Id){
-                this.ShowEvent.push(e);
-              }
-            })
-          }else{
+      // if(e.Price >= this.MinVal && e.Price <= this.MaxVal){
+      //   if(this.Kategori=="Activity" || this.Kategori=="Attraction" || this.Kategori=="Event"){
+      //     console.log(this.Kategori+" "+e.Kategori)
+      //     if(this.Kategori == e.Kategori){
+      //       if(this.Country != null && this.Country != ""){
+      //         this.RealLocation.forEach(l =>{
+      //           if(l.Country == this.Country && l.Id == e.Id){
+      //             this.ShowEvent.push(e)
+      //           }
+      //         })
+      //       }else{
+      //         this.ShowEvent.push(e);
+      //       }
+      //     }
+      //   }else{
+      //     if(this.Country != null && this.Country != ""){
+      //       this.RealLocation.forEach(l =>{
+      //         if(l.Country == this.Country && l.Id == e.Id){
+      //           this.ShowEvent.push(e);
+      //         }
+      //       })
+      //     }else{
             this.ShowEvent.push(e);
-          }
-        }
-      }
+      //     }
+      //   }
+      // }
       
     });
         

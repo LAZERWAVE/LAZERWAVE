@@ -102,12 +102,20 @@ export class ManageEventComponent implements OnInit {
   insTumbnail: string;
   insKategori: string;
   insert(){
+    this.insTitle = document.getElementById("output").innerHTML
+    console.log(this.insTitle)
     if(this.insTitle == "" || this.insPrice < 1 || this.insTumbnail =="" || this.insKategori == ""){
       alert("field cannot be empty")
       return;
     }
+    var temp
     this.eventService.InsertEvent(this.insKategori,this.insPrice,this.insTitle,this.insTumbnail).subscribe(
       async queryy => {
+        temp = queryy
+        if(temp[0] == null){
+          alert("Evented hased been Rejected")
+          return
+        }
         alert("insert succes <3");
         await this.getData();
       }

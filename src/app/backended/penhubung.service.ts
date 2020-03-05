@@ -17,6 +17,8 @@ export class PenhubungService {
   public registering: boolean;
   public Currency: string;
   public BlogId: number;
+  public CurrHotel: number
+  public FlightId: number
 
   constructor() { }
 

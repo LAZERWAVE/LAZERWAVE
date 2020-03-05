@@ -1,0 +1,100 @@
+<div class="makeItARow">
+    <div class="makeItAColumn">
+        {{Provinsi}}
+        <input type="text"  [(ngModel)]="Provinsi" matTooltip="Provinsi">
+    </div>
+    
+    <input [(ngModel)]="FlightDate" [matDatepicker]="endDate">
+    <mat-datepicker-toggle [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>    
+    
+    <div>
+        <div *ngIf="Quantity != null">
+            Jumlah {{Quantity}}
+        </div>
+        <input type="text" [(ngModel)]="Quantity" matTooltip="Quantity">
+    </div>
+    <button (click)="cari()">cari</button>
+</div>
+<div class="makeItARow">
+    <div class="makeItAColumn">
+        <div (click)="gotoMap()">
+            <img src="./../../../assets/map_widget.svg" alt="">
+        </div>
+        <div class="makeItAColumn">
+            <div>
+                <label for="">Name</label>
+                <input (keyup)="getData()" [(ngModel)]="Name" type="text">
+            </div>
+            <div>
+                <label for="">Rating</label>
+                <input (keyup)="getData()" [(ngModel)]="Rating" type="text">
+            </div>
+            <div>
+                <label for="">Price</label>
+                <input (keyup)="getData()" [(ngModel)]="MinPrice" type="text" matTooltip="min">
+                <input (keyup)="getData()" [(ngModel)]="MaxPrice" type="text" matTooltip="max">
+            </div>
+            <div>
+                <label for="">Fasilitas</label>
+                <input (keyup)="getData()" [(ngModel)]="Fasilitas" type="text">
+            </div>
+            <div>
+                <label for="">Area</label>
+                <input (keyup)="getData()" [(ngModel)]="Area" type="text">
+            </div>
+            <div>
+                <label for="">Kategori</label>
+                <input (keyup)="getData()" [(ngModel)]="Kategori" type="text">
+            </div>
+            <div>
+                <label for="">Sort</label>
+                <input (keyup)="sort()" [(ngModel)]="sortFilter" type="text" matTooltip="Murah | Mahal | Rating | Bintang">
+            </div>
+            <div>
+                <button (click)="reset()">reset</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div *ngFor="let h of realHotel">
+            <div class="makeItARow" style="border: 1px solid black; border-radius: 10px; padding: 10px; margin: 10px;">
+                <div>
+                    <img src="./../../../assets/blog/{{h.Tumbnail}}" style="width: 75px; height: 75px;" alt="">
+                </div>
+                <div>
+                    <div>
+                        <label for="">{{h.Name}}</label>
+                    </div>
+                    <div class="makeItARow">
+                        {{h.Star}}
+                        <div *ngFor="let hh of bar; let i = index">
+                            <span *ngIf=" i < h.Star">
+                                <img style="width: 10px; height: 10px;" src="./../../../assets/blog/star.png" alt="">
+                            </span>
+                        </div>
+                        <div>
+                            {{h.Area}}
+                        </div>
+                    </div>
+                    <div>
+                        {{h.Fasilitas}}
+                    </div>
+                </div>
+                <div>
+                    <div *ngIf="h.Price == h.DiscountPrice">
+                        {{h.Price}}
+                    </div>
+                    <div class="makeItAColumn" *ngIf=" h.Price != h.DiscountPrice">
+                        <del>{{h.Price}}</del>
+                        {{h.DiscountPrice}}
+                    </div>
+                    <button (click)="gotoDetail(h.Id)">BOOK</button>
+                    <div>
+                        {{h.AvailableRoom}} available
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

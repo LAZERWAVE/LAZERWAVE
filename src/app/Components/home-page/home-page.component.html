@@ -44,9 +44,31 @@
         <app-going-car *ngIf="selected_car"></app-going-car>
     </div>
 </div>
+<div *ngIf="showHotels == null">
+    Loading . . .
+</div>
+<div style="display: flex; flex-direction: row;">
+    <div *ngFor="let f of showHotels" style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+        <div>
+            <img style="width: 100px; height: 100px;" src="./../../../assets/blog/{{f.Tumbnail}}" alt="">
+        </div>
+        <div>
+            {{f.Name}}
+            {{f.Category}}
+            <div class="makeItARow">
+                <div *ngFor="let hh of bar; let i = index">
+                    <span *ngIf=" i < f.Star">
+                        <img style="width: 10px; height: 10px;" src="./../../../assets/blog/star.png" alt="">
+                    </span>
+                </div>
+            </div>
+            {{f.Price}}
+        </div>
+    </div>
+</div>
 
 <div  style=" position: fixed; display: flex;justify-content: flex-end; width: 98%">
-    <a class="wa" href="https://www.whatsapp.com/?lang=id">whatsaap</a>
+    <a class="wa" href="https://web.whatsapp.com/send?phone=628551500878&text=Hi%2c%20tiket.com">whatsaap</a>
 </div>
 
 

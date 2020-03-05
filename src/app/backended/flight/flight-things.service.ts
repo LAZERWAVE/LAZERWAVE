@@ -109,6 +109,83 @@ export class FlightThingsService {
       fetchPolicy: 'no-cache'
     })
   }
+
+  GetFillterPlane(Company: string,Durasi:number,StartTime: number, EndTime: number,Fasilitas: string,
+    StartLocation: string,EndLocation: string,Transit: number,TransitTime: number): Observable<Flight[]>{
+    return this.apollo.query<any>({
+      query: gql`
+        query GetPlaneFilter($Durasi:Float!,$Company: String!,$StartTime:Float!,$EndTime: Float!,$StartLocation: String!,$EndLocation: String!,$Transit: Int!,$TransitTime:Int!,$Fasilitas: String!){
+          GetPlaneFilter(Durasi: $Durasi, Company: $Company,StartTime: $StartTime,EndTime: $EndTime,StartLocation: $StartLocation, EndLocation: $EndLocation,Transit: $Transit,TransitTime: $TransitTime,Fasilitas: $Fasilitas){
+            Company
+            EndLocation
+            EndTime
+            Fasilitas
+            Id
+            Name
+            Price
+            StartLocation
+            StartTime
+            Transit
+            TransitTime
+            Tumbnail
+          }
+        }
+      `,
+      variables:{
+        "Company": "",
+        "Durasi": 0,
+        "EndLocation": "",
+        "EndTime": 0,
+        "Fasilitas": "",
+        "StartLocation": "",
+        "StartTime": 0,
+        "Transit": 0,
+        "TransitTime": 0
+      },
+      fetchPolicy: 'no-cache'
+    }).pipe(map(
+      result => result.data.GetPlaneFilter
+    ))
+  }
+
+  GetFillterPlane2(Company: string,Durasi:number,StartTime: number, EndTime: number,Fasilitas: string,StartLocation: string,EndLocation: string,Transit: number,TransitTime: number): Observable<any>{
+    return this.apollo.query<any>({
+      query: gql`
+        query GetPlaneFilter($Durasi:Float!,$Company: String!,$StartTime:Float!,$EndTime: Float!,$StartLocation: String!,$EndLocation: String!,$Transit: Int!,$TransitTime:Int!,$Fasilitas: String!){
+          GetPlaneFilter(Durasi: $Durasi, Company: $Company,StartTime: $StartTime,EndTime: $EndTime,StartLocation: $StartLocation, EndLocation: $EndLocation,Transit: $Transit,TransitTime: $TransitTime,Fasilitas: $Fasilitas){
+            Company
+            EndLocation
+            EndTime
+            Fasilitas
+            Id
+            Name
+            Price
+            StartLocation
+            StartTime
+            Transit
+            TransitTime
+            Tumbnail
+          }
+        }
+      `,
+      variables:{
+        "Company": "",
+        "Durasi": 0,
+        "EndLocation": "",
+        "EndTime": 0,
+        "Fasilitas": "",
+        "StartLocation": "",
+        "StartTime": 0,
+        "Transit": 0,
+        "TransitTime": 0
+      },
+      fetchPolicy: 'no-cache'
+    })
+  }
+
+
 }
+
+
 
 

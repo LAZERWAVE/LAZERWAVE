@@ -45,7 +45,7 @@ export class ManageBlogComponent implements OnInit {
     this.BlogInterfaces = [x]
     this.BlogInterfaces.pop()
     this.ShowBlog.forEach(e => {
-
+      console.log(e)
       let x : BlogInterface;
       x={
         Id: e.Id,
@@ -57,7 +57,9 @@ export class ManageBlogComponent implements OnInit {
       }
       this.BlogInterfaces.push(x)
     });
+    // console.log(this.BlogInterfaces)
     this.dataSourcee = new MatTableDataSource(this.BlogInterfaces);
+    // console.log(this.dataSource)
     this.dataSourcee.paginator = this.paginator
   }
 
@@ -85,7 +87,7 @@ export class ManageBlogComponent implements OnInit {
     this.upTumbnail=""
     this.upContent=""
     this.upCategory=""
-    this.Category=" "
+    this.Category=""
   }
 
   Category: string;
@@ -99,8 +101,14 @@ export class ManageBlogComponent implements OnInit {
       alert("field cannot be empty")
       return;
     }
+    var temp
     this.blogService.InsertBlog(this.insTitle,this.insContent,this.insTumbnail,this.insCategory).subscribe(
       async queryy => {
+        temp = queryy
+        if(temp[0] == null){
+          alert("No SQL SQL INJECTION!")
+          return
+        }
         alert("insert succes <3");
         await this.getData();
       }
@@ -160,7 +168,10 @@ export class ManageBlogComponent implements OnInit {
     this.ShowBlog.pop();
 
     this.Blogs.forEach(e => {
+      console.log("check >"+this.Category+"< >"+e.Category+"<")
+    
       if(this.Category == "" || this.Category == e.Category){
+        console.log("Masuk >"+this.Category+"< >"+e.Category+"<")
         this.ShowBlog.push(e)
       }
     });

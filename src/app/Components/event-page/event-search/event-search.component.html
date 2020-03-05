@@ -11,9 +11,9 @@
       <label>Pilih Country</label>
       <input [(ngModel)]="Country" type="text">
       <div>
-        <button (click)="filter()">Filter</button>
+        <button (click)="getEvent()">Filter</button>
         <button (click)="reset()">reset</button>
-      </div>
+      </div> 
     </div>
       <div #list>
         <div *ngFor="let event of ShowEvent" style="display: inline-flex; width: 25%;">

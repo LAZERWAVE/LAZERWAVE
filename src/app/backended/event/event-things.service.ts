@@ -140,5 +140,29 @@ export class EventThingsService {
       fetchPolicy: 'no-cache'
     })
   }
+
+  GetFilterEvent(min: number,max:number,Kategory: string): Observable<EventCard[]>{
+    return this.apollo.query<any>({
+      query: gql`
+        query GetFilterEvent($Min: Int!,$Max: Int!,$Kategory: String!){
+          GetFilterEvent(Min: $Min, Max: $Max,Kategory: $Kategory){
+            Id
+            Kategori
+            Price
+            Title
+            Tumbnail
+          }
+        }
+      `,
+      variables:{
+        "Min": min,
+        "Max": max,
+        "Kategory": Kategory
+      },
+      fetchPolicy: 'no-cache'
+    }).pipe(map(
+      result => result.data.GetFilterEvent
+    ))
+  }
 }
 

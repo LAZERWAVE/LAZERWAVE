@@ -6,6 +6,7 @@ import { async } from 'rxjs/internal/scheduler/async';
 import { PhoneThingsService } from 'src/app/backended/phone/phone-things.service';
 import { UserThingsService } from 'src/app/backended/user/user-things.service';
 import * as $ from 'jquery'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -14,7 +15,7 @@ import * as $ from 'jquery'
 })
 export class AccountComponent implements OnInit {
 
-  constructor(public realUserService: UserThingsService,public phoneService: PhoneThingsService,public penghubung:PenhubungService,public userService: LoginThingsService) { }
+  constructor(public router: Router,public realUserService: UserThingsService,public phoneService: PhoneThingsService,public penghubung:PenhubungService,public userService: LoginThingsService) { }
 
   CurrUser: User;
 
@@ -38,6 +39,10 @@ export class AccountComponent implements OnInit {
     this.validPassword = false;
     this.upPassword=""
       
+  }
+
+  gotoChat(){
+    this.router.navigateByUrl("Chat")
   }
 
   save(){

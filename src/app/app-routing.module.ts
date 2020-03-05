@@ -17,6 +17,12 @@ import { AccountComponent } from './Components/account/account.component'
 import { PromoComponent } from './Components/promo/promo.component';
 import { FlightComponent } from './Components/flight/flight.component'
 import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/manage-flight.component';
+import { HotelComponent } from './Components/hotel/hotel.component';
+import { HotelMapComponent } from './Components/hotel/hotel-map/hotel-map.component';
+import { HotelDetailComponent } from './Components/hotel-detail/hotel-detail.component';
+import { ManageHotelComponent } from './Components/Admin-Manage/manage-hotel/manage-hotel.component';
+import { FlightDetailComponent } from './Components/flight/flight-detail/flight-detail.component';
+import { ChattingComponent } from './Components/chatting/chatting.component';
 
 const routes: Routes = [
   {path:'EventDetail',component: EventDetailPageComponent},
@@ -35,7 +41,13 @@ const routes: Routes = [
   {path:'Account',component:AccountComponent},
   {path:'Promo',component:PromoComponent},
   {path:'Flight',component:FlightComponent},
-  {path:'ManageFlight',component:ManageFlightComponent}
+  {path:'ManageFlight',component:ManageFlightComponent},
+  {path:'Hotel',component:HotelComponent},
+  {path:'HotelMap',component:HotelMapComponent},
+  {path:'HotelDetail',component:HotelDetailComponent},
+  {path:'ManageHotel',component:ManageHotelComponent},
+  {path:'FlightDetail',component:FlightDetailComponent},
+  {path:'Chat',component:ChattingComponent}
 ];
 
 @NgModule({

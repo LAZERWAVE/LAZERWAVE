@@ -59,5 +59,32 @@ export class CarThingsService {
     ))
   }
   
-  
+  GetFilterCar(Name: string,Min: number,Max:number,Capacity: number,Brand: string,City: string): Observable<Car[]>{
+    return this.apollo.query<any>({
+      query: gql`
+        query GetFilterCar($Name: String!,$Min: Int!,$Max: Int!,$Capacity: Int!,$Brand: String!,$City: String!){
+          GetFilterCar(Name: $Name,Min: $Min, Max: $Max, Capacity: $Capacity,Brand: $Brand,City: $City){
+            Brand
+            Capacity
+            Id
+            Location
+            Name
+            Price
+            Tumbnail
+          }
+        }
+      `,
+      variables:{
+        "Name": Name,
+        "Min": Min,
+        "Max": Max,
+        "Capacity": Capacity,
+        "Brand": Brand,
+        "City": City
+      },
+      fetchPolicy: 'no-cache'
+    }).pipe(map(
+      result => result.data.GetFilterCar
+    ))
+  }
 }

@@ -3,6 +3,8 @@ import { FlightThingsService } from 'src/app/backended/flight/flight-things.serv
 import { Flight } from 'src/app/Model/Flight';
 import { async } from 'rxjs/internal/scheduler/async';
 import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
+import { Router } from '@angular/router';
+import { PenhubungService } from 'src/app/backended/penhubung.service';
 
 @Component({
   selector: 'app-flight',
@@ -11,7 +13,7 @@ import { ChatThingsService } from 'src/app/backended/chathings/chat-things.servi
 })
 export class FlightComponent implements OnInit {
 
-  constructor(public flightService: FlightThingsService,public chat: ChatThingsService) { }
+  constructor(public penghubung:PenhubungService,public router: Router,public flightService: FlightThingsService,public chat: ChatThingsService) { }
 
   Flights: Flight[]
   showH: boolean[]
@@ -29,16 +31,16 @@ export class FlightComponent implements OnInit {
   EndLocation: string
 
   ngOnInit() {
+    this.reset()
     this.getData()
     this.Quantity=0
-    this.reset()
     this.chat.listen("plane").subscribe(e=>{
       alert(e)
     })
   }
 
   getData(){
-    this.flightService.GetAllPlane().subscribe(
+    this.flightService.GetFillterPlane(this.Maskapai,this.Durasi,this.TimeStart,this.TimeEnd,this.Fasilitas,this.StartLocation,this.EndLocation,this.Transit,this.TransitDurasi).subscribe(
       async result =>{
         this.Flights = result
         await this.initShow()
@@ -93,6 +95,11 @@ export class FlightComponent implements OnInit {
     this.showT[id-1] =!this.showT[id-1]
     this.showH[id-1] = false;
     
+  }
+
+  pilih(id: number){
+    this.penghubung.FlightId = id;
+    this.router.navigateByUrl("FlightDetail")
   }
 
   showHarga(id: number){

@@ -1,0 +1,105 @@
+<div style="width: 70%;">
+    <div *ngFor="let f of RealFlight; let i = index">
+        <div style="display: flex;" *ngIf="penghubung.FlightId == f.Id">
+            <div class="makeItAColumn" style="width: 50%; border: 1px solid black; border-radius: 10px; padding: 10px;">    
+                <div>
+                    {{f.Name}}
+                </div>
+                <div class="makeItARow" style="justify-content:  space-between; width: 100%;">
+                    <img style="width: 20px; height: 20px;" src="./../../../assets/blog/{{f.Tumbnail}}" alt="">
+                    <label for="">{{f.StartTime}}-{{f.EndTime}}</label>
+                    <label for="">{{f.Fasilitas}}</label>
+                    <label for="">{{f.Price}}</label>
+                </div>
+                <div>
+                    <h6>Perjalanan dari {{f.StartLocation}}</h6>
+                    <h6>Ada {{f.Transit}} Transit dengan {{f.TransitTime}} jam</h6>
+                    <h6>Ada Fasilitas {{f.Fasilitas}}</h6>
+                    <h6>Perjalanan akhir di {{f.EndLocation}}</h6>
+                    <h6>Harga Special dengan {{f.Price * Quantity}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="step1">
+    <div class="makeItAColumn" style="width: 50%;border: 1px solid black;">
+        <div class="makeItARow">
+            <label for="">Title</label>
+            <input [(ngModel)]="PenumpangTitle" type="text">
+            <label for="">Nama Depan</label>
+            <input [(ngModel)]="PenumpangDepan" type="text">
+            <label for="">Nama Belakang</label>
+            <input [(ngModel)]="PenumpangBelakang" type="text">
+        </div>
+        <div class="makeItARow">
+            <label for="">Kode Negara</label>
+            <select>
+                <option value="">+61</option>
+                <option value="">+62</option>
+                <option value="">+63</option>
+            </select>
+            <label for="">Nomor Telepon</label>
+            <input [(ngModel)]="PenumpangTelepon" type="text">
+        </div>
+        <label for="">Email anda</label>
+        <input [(ngModel)]="PenumpangEmail" type="text">
+    </div>
+    <div>
+        <button (click)="nextStep1()">next</button>
+    </div>
+</div>
+<div *ngIf="step2">
+    <div>
+        Detail Pengambilan tiket
+    </div>
+    <div class="makeItAColumn" style="width: 100%;border: 1px solid black;">
+        <div class="makeItARow">
+            <label for="">Title</label>
+            <input [(ngModel)]="PemesanTitle" type="text">
+
+            <label for="">Nama Depan</label>
+            <input [(ngModel)]="PemesanDepan" type="text">
+
+            <label for="">Nama Belakang</label>
+            <input [(ngModel)]="PemesanBelakang" type="text">
+        </div>
+        <div class="makeItARow">
+            <label for="">Kode Negara</label>
+            <input type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+                {{option}}
+            </mat-option>
+            </mat-autocomplete>
+            <label for="">Nomor Telepon</label>
+            <input [(ngModel)]="PemesanTelepon" type="text">
+        </div>
+        <label for="">Email anda</label>
+        <input [(ngModel)]="PemesanEmail" type="text">
+    </div>
+    <button (click)="nextBack2()">Back</button>
+    <button (click)="next2()">Next</button>
+</div>
+<div *ngIf="step3">
+    <select id="cars">
+        <option value="BCA">BCA - tax 1%</option>
+        <option value="CBA">CBA - tax 0%</option>
+        <option value="CBR">CBR - tax 2%</option>
+        <option value="CCA">CCA - tax 0%</option>
+    </select>
+    <div>
+        <label for="">input no rek</label>
+        <input type="text">
+    </div>
+    <div>
+        <label for=""> input pass key</label>
+        <input type="text">
+    </div>
+    <button (click)="backStep3()">Back</button>
+    <button  (click)="order()">order</button>   
+</div>

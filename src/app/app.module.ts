@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,7 +43,16 @@ import { AccountComponent } from './Components/account/account.component';
 import { PromoComponent } from './Components/promo/promo.component';
 import { FlightComponent } from './Components/flight/flight.component';
 import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/manage-flight.component';
-
+import { HotelComponent } from './Components/hotel/hotel.component';
+import { HotelMapComponent } from './Components/hotel/hotel-map/hotel-map.component';
+import { HotelDetailComponent } from './Components/hotel-detail/hotel-detail.component';
+import { MapPopUpService } from './backended/map/map-pop-up/map-pop-up.service';
+import { ManageHotelComponent } from './Components/Admin-Manage/manage-hotel/manage-hotel.component';
+import { MatSelectModule } from '@angular/material';
+import { FlightDetailComponent } from './Components/flight/flight-detail/flight-detail.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalenderComponent } from './Components/calender/calender.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +90,12 @@ import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/m
     PromoComponent,
     FlightComponent,
     ManageFlightComponent,
+    HotelComponent,
+    HotelMapComponent,
+    HotelDetailComponent,
+    ManageHotelComponent,
+    FlightDetailComponent,
+    CalenderComponent,
 
   ],
   imports: [
@@ -93,6 +108,9 @@ import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/m
     HttpClientModule,
     LeafletModule.forRoot(),
     ShareButtonModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   entryComponents: [
     LoginComponent,
@@ -104,7 +122,7 @@ import { ManageFlightComponent } from './Components/Admin-Manage/manage-flight/m
   
   ],
   providers: [
-    
+    MapPopUpService 
   ],
   bootstrap: [AppComponent]
 })

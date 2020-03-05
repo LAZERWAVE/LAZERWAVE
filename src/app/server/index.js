@@ -20,5 +20,17 @@ io.on('connection', function(socket) {
     socket.on('event', function(msg) {
 			io.emit('event', msg);
     });
+
+    socket.on('hotel', function(msg) {
+			io.emit('hotel', msg);
+    });
+
+    socket.on('login', function(msg) {
+			io.emit('login', msg);
+    });
+
+    socket.on('train', function(msg) {
+				io.emit('train', msg);
+    });
 });
 

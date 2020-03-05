@@ -7,6 +7,7 @@ import { Login3Component } from '../Login/login3/login3.component';
 import { Login2Component } from '../Login/login2/login2.component';
 import { UserThingsService } from 'src/app/backended/user/user-things.service';
 import { async } from 'rxjs/internal/scheduler/async';
+import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
   Languague: string;
   Currency: string;
 
-  constructor(public userService: UserThingsService,public loginService: LoginThingsService,public dialog: MatDialog,public penghubung: PenhubungService,private router: Router) { }
+  constructor(public chat:ChatThingsService,public userService: UserThingsService,public loginService: LoginThingsService,public dialog: MatDialog,public penghubung: PenhubungService,private router: Router) { }
 
   test(){
     this.penghubung.Currency=this.Currency;
@@ -33,13 +34,11 @@ export class HeaderComponent implements OnInit {
     this.Languague="Indonesia";
     this.Currency="IDR";
 
-    var a = setInterval(()=>{
-      if(this.penghubung.CurrentUser != null){
-        this.Currency = this.penghubung.Currency;
-        this.Languague=this.penghubung.CurrentUser.Language;
-        clearInterval(a)
-      }
-    },1000)
+    this.chat.listen("login").subscribe(e=>{
+      this.Currency = this.penghubung.CurrentUser.Currency
+      this.Languague = this.penghubung.CurrentUser.Languague
+    })
+
   }
 
   gotoRent(){
@@ -89,6 +88,14 @@ export class HeaderComponent implements OnInit {
     }
     this.router.navigateByUrl("Flight");
   }
+
+  gotoHotel(){
+    if(this.penghubung.CurrentUser != null && this.penghubung.CurrentUser.FirstName == "admin"){
+      this.router.navigateByUrl("ManageHotel")
+      return;
+    }
+    this.router.navigateByUrl("Hotel");
+  }
    
   setLanguague(){
     if(this.penghubung.CurrentUser == null){
@@ -103,6 +110,6 @@ export class HeaderComponent implements OnInit {
 
   bar(){
     console.log(this.penghubung.CurrentUser)
-    this.Languague = this.penghubung.CurrentUser.Language
+    this.Languague = this.penghubung.CurrentUser.Languague
   }
 }

@@ -6,6 +6,7 @@ import { User } from './../../../Model/user'
 import { async } from 'rxjs/internal/scheduler/async';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { PenhubungService } from 'src/app/backended/penhubung.service';
+import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
 
 
 @Component({
@@ -24,9 +25,10 @@ export class Login2Component implements OnInit {
     users: User[];
     validEmail: boolean;
 
-    constructor(public penghubung: PenhubungService,public dialog:MatDialog,public loginService: LoginThingsService) {}
+    constructor(public chat: ChatThingsService,public penghubung: PenhubungService,public dialog:MatDialog,public loginService: LoginThingsService) {}
 
     ngOnInit() {
+
         this.email = "";
         this.pass = "";
         this.users = [null];
@@ -71,6 +73,7 @@ export class Login2Component implements OnInit {
               if (this.users[0] != null){
                 this.penghubung.CurrentUser = this.users[0];
                 alert("DUAR WELCOME <3");
+                this.chat.emit("login",this.penghubung.CurrentUser.Currency)
               }
               else{
 

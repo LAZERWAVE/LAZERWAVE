@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { TrainThingsService } from './../../../backended/train/train-things.service'
 import { Train } from '../../../Model/Train';
+import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
 
 export interface TrainInterface {
     Id: number
@@ -21,7 +22,7 @@ export interface TrainInterface {
 })
 export class ManageTrainComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  constructor(public trainService: TrainThingsService) { }
+  constructor(public chat: ChatThingsService,public trainService: TrainThingsService) { }
 
   Trains: Train[];
   ShowTrain: Train[];
@@ -115,13 +116,20 @@ export class ManageTrainComponent implements OnInit {
       alert("field cannot be empty")
       return;
     }
+    var temp
     this.trainService.InsertTrain(this.insName,this.insClass,this.insStartTime,this.insEndTime,this.insPrice,this.insStartLocation,this.insEndLocation).subscribe(
       async queryy => {
+        temp = queryy
+        if(queryy == null){
+          alert("Invalid data checked by backend")
+          return;
+        }
         alert("insert succes <3");
         await this.getData();
       }
     )
     this.init();
+    this.chat.emit("train","new data")
   }
   
   sure: boolean

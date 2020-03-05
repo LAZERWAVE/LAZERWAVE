@@ -25,6 +25,7 @@ export class LoginThingsService {
             Phone
             Languague
             Title
+            Currency
           }
         }
       `,
@@ -47,6 +48,7 @@ export class LoginThingsService {
             Phone
             Languague
             Title
+            Currency
           }
         }
       `,
@@ -72,6 +74,7 @@ export class LoginThingsService {
             Phone
             Languague
             Title
+            Currency
           }
         }  
       `,

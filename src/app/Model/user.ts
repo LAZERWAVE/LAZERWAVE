@@ -5,9 +5,8 @@ export class User{
 	Email :string
 	Phone :string
 	Password :string
-	
 	Currency: string;
-	Language: string;
+	Languague: string;
 	Title: string
 	Kota: string
 	Alamat: string

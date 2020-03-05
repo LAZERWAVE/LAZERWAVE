@@ -64,7 +64,7 @@
                     <div class="makeItARow" style="justify-content:  space-between; width: 100%;">
                         <button (click)="showTerbang(f.Id)">Detail Terbang</button>
                         <button (click)="showHarga(f.Id)">Detail Harga</button>
-                        <button>Pilih</button>
+                        <button (click)="pilih(f.Id)">Pilih</button>
                     </div>
                     <div *ngIf="showT[i]">
                         <h2>Perjalanan dari {{f.StartLocation}}</h2>
@@ -79,4 +79,7 @@
             </div>
         </div>
     </div>
+</div>
+<div>
+    <app-calender></app-calender>
 </div>

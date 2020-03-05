@@ -9,6 +9,7 @@ import { PenhubungService } from 'src/app/backended/penhubung.service';
 import { MatDialog } from '@angular/material';
 import { TrainDetailComponent } from './train-detail/train-detail.component'
 import { TransactionThingsService } from 'src/app/backended/transaction/transaction-things.service';
+import { ChatThingsService } from 'src/app/backended/chathings/chat-things.service';
 
 @Component({
   selector: 'app-train-page',
@@ -17,7 +18,7 @@ import { TransactionThingsService } from 'src/app/backended/transaction/transact
 })
 export class TrainPageComponent implements OnInit {
 
-  constructor(public transaction: TransactionThingsService, public dialog: MatDialog,public router: Router,public trainService: TrainThingsService,public penghubung: PenhubungService) { }
+  constructor(public chat:ChatThingsService,public transaction: TransactionThingsService, public dialog: MatDialog,public router: Router,public trainService: TrainThingsService,public penghubung: PenhubungService) { }
   showClass: boolean;
   showTime: boolean;
   showName: boolean;
@@ -39,10 +40,13 @@ export class TrainPageComponent implements OnInit {
     this.showTime=false;
     this.reset();
     this.getTrain();
+    this.chat.listen("train").subscribe(e =>{
+      alert(e)
+    })
   }
 
   getTrain(){
-    this.trainService.GetTrainByStartAndEnd(this.StartLocation,this.EndLocation).subscribe(
+    this.trainService.GetFilterTrain(this.Class,this.TimeMin,this.TimeMax,this.Name,this.StartLocation,this.EndLocation).subscribe(
       async result =>{
         this.Trains = result;
         await this.filter();
@@ -55,13 +59,13 @@ export class TrainPageComponent implements OnInit {
     this.showTrains.pop();
 
     this.Trains.forEach(t =>{
-      if(this.Class == "" || this.Class == t.Class){
-        if(this.TimeMin <= t.StartTime && this.TimeMax >= t.EndTime){
-          if(this.Name == "" || t.Name == this.Name){
+      // if(this.Class == "" || this.Class == t.Class){
+      //   if(this.TimeMin <= t.StartTime && this.TimeMax >= t.EndTime){
+      //     if(this.Name == "" || t.Name == this.Name){
             this.showTrains.push(t);
-          }
-        }
-      }
+      //     }
+      //   }
+      // }
     })
     
     if(this.sortBy == "Harga terendah"){

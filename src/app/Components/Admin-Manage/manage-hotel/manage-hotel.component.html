@@ -1,0 +1,244 @@
+<div class="makeItAColumn">
+    <div>
+        <label for="">Name</label>
+        <input (keyup)="getData()" [(ngModel)]="Name" type="text">
+    </div>
+    <div>
+        <label for="">Rating</label>
+        <input (keyup)="getData()" [(ngModel)]="Rating" type="text">
+    </div>
+    <div>
+        <label for="">Price</label>
+        <input (keyup)="getData()" [(ngModel)]="MinPrice" type="text" matTooltip="min">
+        <input (keyup)="getData()" [(ngModel)]="MaxPrice" type="text" matTooltip="max">
+    </div>
+    <div>
+        <label for="">Fasilitas</label>
+        <input (keyup)="getData()" [(ngModel)]="Fasilitas" type="text">
+    </div>
+    <div>
+        <label for="">Area</label>
+        <input (keyup)="getData()" [(ngModel)]="Area" type="text">
+    </div>
+    <div>
+        <label for="">Kategori</label>
+        <input (keyup)="getData()" [(ngModel)]="Kategori" type="text">
+    </div>
+    <div>
+        <label for="">Sort</label>
+        <input (keyup)="sort()" [(ngModel)]="sortFilter" type="text" matTooltip="Murah | Mahal | Rating | Bintang">
+    </div>
+    <div>
+        <button (click)="reset()">reset</button>
+    </div>
+</div>
+<div *ngIf="HotelInterfaces == null">
+  Loading...
+</div>
+<div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Type">
+        <th mat-header-cell *matHeaderCellDef> Type. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Type}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="Tumbnail">
+        <th mat-header-cell *matHeaderCellDef> Tumbnail. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Tumbnail}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Fasilitas">
+        <th mat-header-cell *matHeaderCellDef> Fasilitas. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Fasilitas}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Star">
+        <th mat-header-cell *matHeaderCellDef> EndTime. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Star}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Price">
+        <th mat-header-cell *matHeaderCellDef> Price. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Address }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Latitude">
+        <th mat-header-cell *matHeaderCellDef> Latitude. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Latitude}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Longitude">
+        <th mat-header-cell *matHeaderCellDef> Longitude. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Longitude}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Count">
+        <th mat-header-cell *matHeaderCellDef> Count. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Count}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="DiscountPrice">
+        <th mat-header-cell *matHeaderCellDef> DiscountPrice. </th>
+        <td mat-cell *matCellDef="let element"> {{element.DiscountPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="AvailableRoom">
+        <th mat-header-cell *matHeaderCellDef> AvailableRoom. </th>
+        <td mat-cell *matCellDef="let element"> {{element.AvailableRoom}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Area">
+        <th mat-header-cell *matHeaderCellDef> Area. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Area}} </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator
+    [pageSizeOptions]="[5]">
+    </mat-paginator>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <div>
+    <label for="">Name</label>
+    <input [(ngModel)]="insName" type="text">
+  </div>
+  <div>
+    <label for="">Type</label>
+    <input [(ngModel)]="insKategori" type="text">
+  </div>
+  <div>
+      <label for="">Tumbnail</label>
+      <input [(ngModel)]="insTumbnail" type="text">
+    </div>
+  <div>
+    <label for="">Fasilitas</label>
+    <input [(ngModel)]="insFasilitas" type="text">
+  </div>
+  <div>
+    <label for="">Address</label>
+    <input [(ngModel)]="insAddress" type="text">
+  </div>
+  <div>
+      <label for="">Latitude</label>
+      <input [(ngModel)]="insLatitude" type="text">
+  </div>
+  <div>
+      <label for="">Longitude</label>
+      <input [(ngModel)]="insLongitude" type="text">
+  </div>
+  <div>
+      <label for="">Star</label>
+      <input [(ngModel)]="insStar" type="text">
+  </div>
+  <div>
+      <label for="">Count</label>
+      <input [(ngModel)]="insCount" type="text">
+  </div>
+  <div>
+      <label for="">Price</label>
+      <input [(ngModel)]="insPrice" type="text">
+  </div>
+  <div>
+    <label for="">DiscountPrice</label>
+    <input [(ngModel)]="insDiscountPrice" type="text">
+  </div>
+  <div>
+    <label for="">Area</label>
+    <input [(ngModel)]="insArea" type="text">
+  </div>
+  <div>
+    <label for="">AvailableRoom</label>
+    <input [(ngModel)]="insAvailableRoom" type="text">
+  </div>
+  <div>
+    <button (click)="insert()">Insert</button>
+  </div>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <div>
+    <label for="">Id</label>
+    <input [(ngModel)]="upId" type="text">
+  </div>
+  <div>
+    <label for="">Name</label>
+    <input [(ngModel)]="upName" type="text">
+  </div>
+  <div>
+    <label for="">Type</label>
+    <input [(ngModel)]="upKategori" type="text">
+  </div>
+  <div>
+      <label for="">Tumbnail</label>
+      <input [(ngModel)]="upTumbnail" type="text">
+    </div>
+  <div>
+    <label for="">Fasilitas</label>
+    <input [(ngModel)]="upFasilitas" type="text">
+  </div>
+  <div>
+    <label for="">Address</label>
+    <input [(ngModel)]="upAddress" type="text">
+  </div>
+  <div>
+      <label for="">Latitude</label>
+      <input [(ngModel)]="upLatitude" type="text">
+  </div>
+  <div>
+      <label for="">Longitude</label>
+      <input [(ngModel)]="upLongitude" type="text">
+  </div>
+  <div>
+      <label for="">Star</label>
+      <input [(ngModel)]="upStar" type="text">
+  </div>
+  <div>
+      <label for="">Count</label>
+      <input [(ngModel)]="upCount" type="text">
+  </div>
+  <div>
+      <label for="">Price</label>
+      <input [(ngModel)]="upPrice" type="text">
+  </div>
+  <div>
+    <label for="">DiscountPrice</label>
+    <input [(ngModel)]="upDiscountPrice" type="text">
+  </div>
+  <div>
+    <label for="">Area</label>
+    <input [(ngModel)]="upArea" type="text">
+  </div>
+  <div>
+    <label for="">AvailableRoom</label>
+    <input [(ngModel)]="upAvailableRoom" type="text">
+  </div>
+  <div>
+    <button (click)="update()">Update</button>
+  </div>
+</div>
+<div style="border: 1px solid black; border-radius: 10px; padding: 10px;">
+  <label for="">Id</label>
+  <input [(ngModel)]="delId" type="text">
+  <button (click)="delete()">Delete</button>
+  <div *ngIf="sure">
+    <label for="">are you sure ?</label>
+    <button style="width: 10%;" (click)="yes()">         yes           </button>
+    <button style="width: 10%;" (click)="no()">         no            </button>
+  </div>
+</div>

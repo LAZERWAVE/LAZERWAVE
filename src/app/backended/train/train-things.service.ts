@@ -145,4 +145,34 @@ export class TrainThingsService {
       fetchPolicy: 'no-cache'
     })
   }
+
+  GetFilterTrain(Class: string,start_time: number,end_time: number,name: string,sl: string,el: string): Observable<Train[]>{
+    return this.apollo.query<any>({
+      query: gql`
+        query GetFilterTrain($Class: String!,$StartTime: Float!,$EndTime: Float!,$Name: String!,$StartLocation: String!,$EndLocation: String!){
+          GetFilterTrain(Class: $Class, StartTime: $StartTime, EndTime: $EndTime, Name: $Name,StartLocation: $StartLocation,EndLocation: $EndLocation){
+            Class
+            EndLocation
+            EndTime
+            Id
+            Name
+            Price
+            StartLocation
+            StartTime
+          }
+        }
+      `,
+      variables:{
+        "Class": Class,
+        "EndTime": end_time,
+        "Name": name,
+        "StartTime": start_time,
+        "StartLocation": sl,
+        "EndLocation": el
+      },
+      fetchPolicy: 'no-cache'
+    }).pipe(map(
+      result => result.data.GetFilterTrain
+    ))
+  }
 }
